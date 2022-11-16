@@ -1,14 +1,14 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NASA_APIs.WPF.ViewModels;
+using NASA_APIs.WPF.Views.Windows;
 using System;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Windows;
 
-namespace NASA_APIs.TestConsole
+namespace NASA_APIs.WPF
 {
-    class Program
+    public partial class App : Application
     {
-
         private static IHost _Hosting;
 
         public static IHost Hosting => _Hosting ??= CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
@@ -21,17 +21,20 @@ namespace NASA_APIs.TestConsole
 
         private static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
-            services.AddHttpClient<NASA_APIsClient>(client => client.BaseAddress = new Uri(host.Configuration["APOD"]));
+            services.AddScoped<MainWindowViewModel>();
         }
-        static async Task Main(string[] args)
+        protected override async void OnStartup(StartupEventArgs e)
+        {
+            var host = Hosting;
+            base.OnStartup(e);
+            await host.StartAsync().ConfigureAwait(true);
+            //Services.GetRequiredService<MainWindow>.Show();
+        }
+        protected override async void OnExit(ExitEventArgs e)
         {
             using var host = Hosting;
-            await host.StartAsync();
-            var apod = Services.GetRequiredService<NASA_APIsClient>();
-            var picture = await apod.GetAPODwithDate(("2020","08","09"));
-            Console.WriteLine("END!!!");
-            Console.ReadLine();
-            await host.StopAsync();
+            base.OnExit(e);
+            await host.StopAsync().ConfigureAwait(false);
         }
     }
 }

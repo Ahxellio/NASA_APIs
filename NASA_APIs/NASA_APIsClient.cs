@@ -4,6 +4,8 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading;
+using NASA_APIs.Models;
+using NASA_APIs.Converters;
 using System.Threading.Tasks;
 
 namespace NASA_APIs
@@ -13,53 +15,25 @@ namespace NASA_APIs
         private readonly HttpClient _Client;
         public NASA_APIsClient(HttpClient Client)=> _Client = Client;
 
-        public async Task<APOD[]> GetAPOD(int count, CancellationToken Cancel = default)
+        public async Task<APODModel[]> GetAPODwithCount(int count, IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
-            return await _Client.GetFromJsonAsync<APOD[]>($"https://api.nasa.gov/planetary/apod?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa&count={count}",
+            return await _Client.GetFromJsonAsync<APODModel[]>($"https://api.nasa.gov/planetary/apod?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa&count={count}",
                 Cancel).ConfigureAwait(false);
         }
-
-    }
-    public class APOD
-    {
-        [JsonPropertyName("date")]
-        [JsonConverter(typeof(JsonDateConverter))]
-        public (string Year, string Month, string Day) Date { get; set; }
-
-        [JsonPropertyName("explanation")]
-        public string Text { get; set; }
-
-        [JsonPropertyName("hdurl")]
-        public string Url { get; set; }
-
-        [JsonPropertyName("title")]
-        public string Title { get; set; }
-
-        [JsonPropertyName("media_type")]
-        public string Type { get; set; }
-
-        //DateTime start_date { get; set; }
-        //DateTime end_date { get; set; }
-        int count { get; set; }
-        //bool thumbs { get; set; }
-
-    }
-
-    internal class JsonDateConverter : JsonConverter<(string Year, string Month, string Day)>
-    {
-        public override (string Year, string Month, string Day) Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public async Task<APODModel[]> GetAPODwithDate((string Year, string Month, string Day) start_date, 
+            (string Year, string Month, string Day) end_date = default, IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
-            var str = reader.GetString();
-            var components = str.Split('-');
-            var year = components[0];
-            var month = components[1];
-            var day = components[2];
-            return (year, month, day);
+            end_date = start_date;
+            return await _Client.GetFromJsonAsync<APODModel[]>($"https://api.nasa.gov/planetary/apod?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa&start_date=" +
+                $"{start_date.Year}-{start_date.Month}-{start_date.Day}&end_date={end_date.Year}-{end_date.Month}-{end_date.Day}",
+                Cancel).ConfigureAwait(false);
         }
-
-        public override void Write(Utf8JsonWriter writer, (string Year, string Month, string Day) value, JsonSerializerOptions options)
+        public async Task<APODModel[]> GetAPODwithPeriod((string Year, string Month, string Day) start_date, (string Year, string Month, string Day) end_date, IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
-            writer.WriteStringValue($"{value.Year} - {value.Month} - {value.Day}");
+            return await _Client.GetFromJsonAsync<APODModel[]>($"https://api.nasa.gov/planetary/apod?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa&start_date={start_date.Year}-{start_date.Month}-{start_date.Day}&end_date={end_date.Year}-{end_date.Month}-{end_date.Day}",
+                Cancel).ConfigureAwait(false);
         }
     }
+   
+    
 }
