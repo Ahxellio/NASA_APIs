@@ -22,31 +22,31 @@ namespace NASA_APIs
 
         public async Task<APODModel[]> GetAPOD(int count, IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
-            return await _Client.GetFromJsonAsync<APODModel[]>($"https://api.nasa.gov/planetary/apod?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa&count={count}",
+            return await _Client.GetFromJsonAsync<APODModel[]>($"planetary/apod?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa&count={count}",
                 Cancel).ConfigureAwait(false);
         }
         public async Task<APODModel[]> GetAPOD((string Year, string Month, string Day) start_date, 
              IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
             (string Year, string Month, string Day) end_date = start_date;
-            return await _Client.GetFromJsonAsync<APODModel[]>($"https://api.nasa.gov/planetary/apod?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa&start_date=" +
+            return await _Client.GetFromJsonAsync<APODModel[]>($"planetary/apod?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa&start_date=" +
                 $"{start_date.Year}-{start_date.Month}-{start_date.Day}&end_date={end_date.Year}-{end_date.Month}-{end_date.Day}",
                 Cancel).ConfigureAwait(false);
         }
         public async Task<APODModel[]> GetAPOD((string Year, string Month, string Day) start_date, (string Year, string Month, string Day) end_date, IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
-            return await _Client.GetFromJsonAsync<APODModel[]>($"https://api.nasa.gov/planetary/apod?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa&start_date=" +
+            return await _Client.GetFromJsonAsync<APODModel[]>($"planetary/apod?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa&start_date=" +
                 $"{start_date.Year}-{start_date.Month}-{start_date.Day}&end_date={end_date.Year}-{end_date.Month}-{end_date.Day}",
                 Cancel).ConfigureAwait(false);
         }
         public async Task<NeoWsModel> GetNeoWs(int id,IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
-            return await _Client.GetFromJsonAsync<NeoWsModel>($"https://api.nasa.gov/neo/rest/v1/neo/{id}?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa",
+            return await _Client.GetFromJsonAsync<NeoWsModel>($"neo/rest/v1/neo/{id}?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa",
                 Cancel).ConfigureAwait(false);
         }
         public async Task<NeoWsModel> GetNeoWs(IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
-            return await _Client.GetFromJsonAsync<NeoWsModel>($"https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa",
+            return await _Client.GetFromJsonAsync<NeoWsModel>($"neo/rest/v1/neo/browse?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa",
                 Cancel).ConfigureAwait(false);
         }
         public async Task<MarsRoversModel> GetMarsPhotos(int sol, IProgress<double> Progress = default, CancellationToken Cancel = default)
@@ -67,6 +67,21 @@ namespace NASA_APIs
         public async Task<TechTransferModel> GetTechTransfers(string soft, IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
             return await _Client.GetFromJsonAsync<TechTransferModel>($"techtransfer/patent/?{soft}" +
+                $"&api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa", Cancel).ConfigureAwait(false);
+        }
+        public async Task<TechPortModel> GetTechPort(int id, IProgress<double> Progress = default, CancellationToken Cancel = default)
+        {
+            return await _Client.GetFromJsonAsync<TechPortModel>($"techport/api/projects/{id}?" +
+                $"api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa", Cancel).ConfigureAwait(false);
+        }
+        public async Task<TechPortProjectsModel> GetTechPort(IProgress<double> Progress = default, CancellationToken Cancel = default)
+        {
+            return await _Client.GetFromJsonAsync<TechPortProjectsModel>($"techport/api/projects?" +
+                $"api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa", Cancel).ConfigureAwait(false);
+        }
+        public async Task<TechPortProjectsModel> GetTechPort((string Year, string Month, string Day) date,IProgress<double> Progress = default, CancellationToken Cancel = default)
+        {
+            return await _Client.GetFromJsonAsync<TechPortProjectsModel>($"techport/api/projects?updatedSince={date.Year}-{date.Month}-{date.Day}" +
                 $"&api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa", Cancel).ConfigureAwait(false);
         }
 
