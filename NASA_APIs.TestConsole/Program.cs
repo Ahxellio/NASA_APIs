@@ -29,7 +29,7 @@ namespace NASA_APIs.TestConsole
             using var host = Hosting;
             await host.StartAsync();
             var apod = Services.GetRequiredService<NASA_APIsClient>();
-            var picture = await apod.GetMarsPhotos(512,2);
+            var picture = await apod.GetTechTransfers("engine");
             Console.WriteLine("END!!!");
             Console.ReadLine();
             await host.StopAsync();

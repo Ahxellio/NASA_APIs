@@ -64,6 +64,11 @@ namespace NASA_APIs
             return await _Client.GetFromJsonAsync<MarsRoversModel>($"mars-photos/api/v1/rovers/curiosity/photos?" +
                 $"sol={sol}&page={page}&api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa", Cancel).ConfigureAwait(false);
         }
+        public async Task<TechTransferModel> GetTechTransfers(string soft, IProgress<double> Progress = default, CancellationToken Cancel = default)
+        {
+            return await _Client.GetFromJsonAsync<TechTransferModel>($"techtransfer/patent/?{soft}" +
+                $"&api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa", Cancel).ConfigureAwait(false);
+        }
 
 
     }
