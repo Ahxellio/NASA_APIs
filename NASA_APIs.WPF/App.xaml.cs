@@ -3,12 +3,16 @@ using Microsoft.Extensions.Hosting;
 using NASA_APIs.WPF.ViewModels;
 using NASA_APIs.WPF.Views.Windows;
 using System;
+using System.Linq;
 using System.Windows;
 
 namespace NASA_APIs.WPF
 {
     public partial class App : Application
     {
+        public static Window WindowActive => Current.Windows.Cast<Window>().FirstOrDefault(w => w.IsActive);
+        public static Window WindowFocused => Current.Windows.Cast<Window>().FirstOrDefault(w => w.IsFocused);
+        public static Window WindowCurrent => WindowFocused ?? WindowActive;
         private static IHost _Hosting;
 
         public static IHost Hosting => _Hosting ??= CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
