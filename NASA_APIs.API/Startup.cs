@@ -11,22 +11,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NASA_APIs.DAL.Context;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace NASA_APIs.API
 {
-    public class Startup
+    public record Startup(IConfiguration Ñonfiguration)
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
 
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
+       
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddDbContext<DataDB>(opt => opt
+            .UseSqlServer(
+                Ñonfiguration.GetConnectionString("Data"), 
+            o => o.MigrationsAssembly("NASA_APIs.DAL.SqlServer")));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

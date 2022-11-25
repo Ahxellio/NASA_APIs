@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NASA_APIs.DAL.Entities
 {
-    public class DataSource
+    public class DataSource : NamedEntity
     {
         public string Description { get; set; }
     }

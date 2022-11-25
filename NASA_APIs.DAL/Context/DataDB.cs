@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NASA_APIs.DAL.Context
 {
-    class DataDB : DbContext
+    public class DataDB : DbContext
     {
         public DbSet<DataValue> Values { get; set; } 
         public DbSet<DataSource> Sources { get; set; }
