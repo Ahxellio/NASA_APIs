@@ -10,7 +10,7 @@ using NASA_APIs.DAL.Context;
 namespace NASA_APIs.DAL.SqlServer.Migrations
 {
     [DbContext(typeof(DataDB))]
-    [Migration("20221125145649_Init")]
+    [Migration("20221126162305_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,9 +32,12 @@ namespace NASA_APIs.DAL.SqlServer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name");
 
                     b.ToTable("Sources");
                 });

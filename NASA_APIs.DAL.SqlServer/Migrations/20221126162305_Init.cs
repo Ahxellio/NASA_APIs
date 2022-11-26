@@ -14,7 +14,7 @@ namespace NASA_APIs.DAL.SqlServer.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,6 +42,11 @@ namespace NASA_APIs.DAL.SqlServer.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Sources_Name",
+                table: "Sources",
+                column: "Name");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Values_SourceId",
