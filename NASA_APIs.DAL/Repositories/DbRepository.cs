@@ -17,6 +17,8 @@ namespace NASA_APIs.DAL.Repositories
 
         protected DbSet<T> Set { get; }
         protected virtual IQueryable<T> Items => Set;
+
+        public bool AutoSaveChanges { get; set; }
         public DbRepository(DataDB db)
         {
             _db = db;
@@ -26,7 +28,8 @@ namespace NASA_APIs.DAL.Repositories
         {
            if(item == null) throw new ArgumentNullException(nameof(item));
             await _db.AddAsync(item, Cancel).ConfigureAwait(false);
-            await _db.SaveChangesAsync(Cancel).ConfigureAwait(false);
+            if(AutoSaveChanges)
+                await SaveChanges(Cancel).ConfigureAwait(false);
             return item;
         }
 
@@ -36,7 +39,8 @@ namespace NASA_APIs.DAL.Repositories
             if (!await ExistId(item.Id, Cancel))
                 return null;
             _db.Remove(item);
-            await _db.SaveChangesAsync(Cancel).ConfigureAwait(false);
+            if (AutoSaveChanges)
+                await SaveChanges(Cancel).ConfigureAwait(false);
             return item;
         }
 
@@ -109,6 +113,8 @@ namespace NASA_APIs.DAL.Repositories
             var query = Items;
             var total_count = await query.CountAsync(Cancel).ConfigureAwait(false);
             if (total_count == 0) return new Page(Enumerable.Empty<T>(), 0, PageIndex, PageSize);
+            if (query is not IOrderedQueryable<T>)
+                query = query.OrderBy(i => i.Id);
             if(PageIndex > 0)
                 query = query.Skip(PageIndex * PageSize);
             query = query.Take(PageSize);
@@ -120,8 +126,13 @@ namespace NASA_APIs.DAL.Repositories
         {
             if (item == null) throw new ArgumentNullException(nameof(item));
             _db.Update(item);
-            await _db.SaveChangesAsync(Cancel).ConfigureAwait(false);
+            if (AutoSaveChanges)
+                await SaveChanges(Cancel).ConfigureAwait(false);
             return item;
+        }
+        public async Task<int> SaveChanges(CancellationToken Cancel = default)
+        {
+            return await _db.SaveChangesAsync(Cancel).ConfigureAwait(false);
         }
     }
 }
