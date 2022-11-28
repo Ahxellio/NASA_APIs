@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 using NASA_APIs.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using NASA_APIs.API.Data;
+using NASA_APIs.Interfaces.Base.Repositories;
+using NASA_APIs.DAL.Repositories;
 
 namespace NASA_APIs.API
 {
@@ -28,6 +30,10 @@ namespace NASA_APIs.API
                 Ñonfiguration.GetConnectionString("Data"), 
             o => o.MigrationsAssembly("NASA_APIs.DAL.SqlServer")));
             services.AddTransient<DataDbInitializer>();
+
+            services.AddScoped(typeof(IRepository<>), typeof(DbRepository<>));
+            services.AddScoped(typeof(INamedRepository<>), typeof(DbNamedRepository<>));
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
