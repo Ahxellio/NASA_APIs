@@ -13,7 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using NASA_APIs.DAL.Context;
 using Microsoft.EntityFrameworkCore;
-
+using NASA_APIs.API.Data;
 
 namespace NASA_APIs.API
 {
@@ -27,6 +27,7 @@ namespace NASA_APIs.API
             .UseSqlServer(
                 Ñonfiguration.GetConnectionString("Data"), 
             o => o.MigrationsAssembly("NASA_APIs.DAL.SqlServer")));
+            services.AddTransient<DataDbInitializer>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -35,8 +36,9 @@ namespace NASA_APIs.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DataDbInitializer db)
         {
+            db.Initialize();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

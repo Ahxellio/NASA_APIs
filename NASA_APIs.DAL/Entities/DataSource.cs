@@ -13,11 +13,4 @@ namespace NASA_APIs.DAL.Entities
     {
         public string Description { get; set; }
     }
-    public class DataValue : Entity
-    {
-        public DateTimeOffset Time { get; set; } = DateTime.Now;
-        public string Value { get; set; }
-        public DataSource Source { get; set; }
-        public bool IsFault { get; set; }
-    }
 }
