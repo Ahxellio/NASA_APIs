@@ -18,7 +18,7 @@ namespace NASA_APIs.DAL.Repositories
         protected DbSet<T> Set { get; }
         protected virtual IQueryable<T> Items => Set;
 
-        public bool AutoSaveChanges { get; set; }
+        public bool AutoSaveChanges { get; set; } = true;
         public DbRepository(DataDB db)
         {
             _db = db;
@@ -105,7 +105,10 @@ namespace NASA_APIs.DAL.Repositories
            return await Items.CountAsync(Cancel).ConfigureAwait(false); 
         }
 
-        protected record Page(IEnumerable<T> Items, int TotalCount, int PageIndex, int PageSize ) : IPage<T>;
+        protected record Page(IEnumerable<T> Items, int TotalCount, int PageIndex, int PageSize ) : IPage<T>
+        {
+            public int TotalPagesCount => (int)Math.Ceiling((double)TotalCount / PageSize);
+        }
         public async Task<IPage<T>> GetPage(int PageIndex, int PageSize, CancellationToken Cancel = default)
         {
             if (PageSize < 0)

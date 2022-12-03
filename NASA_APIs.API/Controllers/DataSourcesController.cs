@@ -27,7 +27,6 @@ namespace NASA_APIs.API.Controllers
         public async Task<IActionResult> ExistId(int id) => 
             await _Repository.ExistId(id) ? Ok(true) : NotFound(false);
 
-        [HttpGet("exist")]
         [HttpPost("exist")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(bool))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(bool))]
@@ -78,7 +77,7 @@ namespace NASA_APIs.API.Controllers
             return AcceptedAtAction(nameof(GetById), new { id = result.Id }, result);
         }
 
-        [HttpDelete()]
+        [HttpDelete("delete")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(DataSource item)
@@ -88,7 +87,7 @@ namespace NASA_APIs.API.Controllers
             return Ok(result);
         }
 
-        [HttpDelete("{id:int}")]
+        [HttpDelete("delete/id/{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> DeleteById(int Id)
