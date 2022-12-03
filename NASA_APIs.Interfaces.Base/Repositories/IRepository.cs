@@ -33,7 +33,7 @@ namespace NASA_APIs.Interfaces.Base.Repositories
         Task<T> GetById(int Id, CancellationToken Cancel = default);
 
         //Добавить объект в репозиторий
-        Task<T> Add(T item, CancellationToken cancellationToken = default);
+        Task<T> Add(T item, CancellationToken Cancel = default);
 
         //Внести изменния в сущность, хранимую в репозитории
         //(Будет возвращена сущность, которая хранилась в репозитори) / null
