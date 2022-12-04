@@ -109,6 +109,7 @@ namespace NASA_APIs.WebApiClients.Repositories
             public int PageIndex { get; init; }
 
             public int PageSize { get; init; }
+            public int TotalPagesCount => (int)Math.Ceiling((double)TotalCount / PageSize);
         }
         public async Task<T> Update(T item, CancellationToken Cancel = default)
         {

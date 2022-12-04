@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NASA_APIs.DAL\NASA_APIs.DAL.csproj" />
     <ProjectReference Include="..\NASA_APIs.WebApiClients\NASA_APIs.WebApiClients.csproj" />
     <ProjectReference Include="..\NASA_APIs\NASA_APIs.csproj" />
   </ItemGroup>

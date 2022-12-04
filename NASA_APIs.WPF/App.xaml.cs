@@ -1,5 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using MathCore.DataGenericSources;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NASA_APIs.DAL.Entities;
+using NASA_APIs.Interfaces.Base.Repositories;
+using NASA_APIs.WebApiClients.Repositories;
 using NASA_APIs.WPF.ViewModels;
 using NASA_APIs.WPF.Views.Windows;
 using System;
@@ -26,6 +30,10 @@ namespace NASA_APIs.WPF
         private static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
             services.AddScoped<MainWindowViewModel>();
+            services.AddHttpClient<IRepository<DataSource>, WebRepository<DataSource>>(client =>
+            {
+                client.BaseAddress = new Uri($"{host.Configuration["WebAPI"]}/api/DataSources/");
+            });
         }
         protected override async void OnStartup(StartupEventArgs e)
         {
