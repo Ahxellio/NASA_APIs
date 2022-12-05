@@ -19,7 +19,7 @@ namespace NASA_APIs.WebApiClients.Repositories
         public WebRepository(HttpClient Client) => _Client = Client;
         public async Task<T> Add(T item, CancellationToken Cancel = default)
         {
-            var response = await _Client.PostAsJsonAsync("", Cancel).ConfigureAwait(false);
+            var response = await _Client.PostAsJsonAsync("", item, Cancel).ConfigureAwait(false);
             var result = await response
                 .EnsureSuccessStatusCode()
                 .Content

@@ -1,12 +1,14 @@
-﻿using NASA_APIs.Converters;
+﻿using NASA_APIs.Interfaces.Base.Converters;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
-namespace NASA_APIs.Models
+namespace NASA_APIs.Interfaces.Base.Entities
 {
-    public class APODModel
+    public interface IAPODEntity
     {
         [JsonPropertyName("date")]
         [JsonConverter(typeof(JsonDateConverter))]
@@ -23,7 +25,5 @@ namespace NASA_APIs.Models
 
         [JsonPropertyName("media_type")]
         public string Type { get; set; }
-
-        public override string ToString() => $"{Title}";
     }
 }

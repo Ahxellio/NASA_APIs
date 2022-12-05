@@ -64,7 +64,7 @@ namespace NASA_APIs.API.Controllers.Base
         public async Task<IActionResult> Add(T item)
         {
             var result = await _Repository.Add(item);
-            return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
+            return CreatedAtAction(nameof(Get), new { id = result.Id }, result);
         }
 
         [HttpPut]

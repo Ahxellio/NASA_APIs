@@ -12,6 +12,7 @@ namespace NASA_APIs.DAL.Context
     {
         public DbSet<DataValue> Values { get; set; } 
         public DbSet<DataSource> Sources { get; set; }
+        public DbSet<DataAPODValues> APODValues { get; set; }
         public DataDB(DbContextOptions<DataDB> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder model)
@@ -21,6 +22,10 @@ namespace NASA_APIs.DAL.Context
                 .HasMany<DataValue>()
                 .WithOne(v => v.Source)
                 .OnDelete(DeleteBehavior.Cascade);
+            model.Entity<DataSource>()
+               .HasMany<DataAPODValues>()
+               .WithOne(v => v.Source)
+               .OnDelete(DeleteBehavior.Cascade);
 
         }
 

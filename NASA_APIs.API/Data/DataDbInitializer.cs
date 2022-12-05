@@ -17,11 +17,10 @@ namespace NASA_APIs.API.Data
         public void Initialize()
         {
             _db.Database.Migrate();
-
             if (_db.Sources.Any()) return;
 
             var rnd = new Random();
-            for (var i = 1; i <=10; i++)
+            for (var i = 1; i <= 10; i++)
             {
                 var source = new DataSource
                 {
@@ -31,7 +30,7 @@ namespace NASA_APIs.API.Data
                 _db.Sources.Add(source);
 
                 var values = new DataValue[rnd.Next(10, 20)];
-                for(var (j, count) = (0, values.Length); j< count; j++)
+                for (var (j, count) = (0, values.Length); j < count; j++)
                 {
                     var value = new DataValue
                     {
@@ -43,6 +42,8 @@ namespace NASA_APIs.API.Data
                 }
                 _db.Values.AddRange(values);
             }
+
+
             _db.SaveChanges();
         }
     }
