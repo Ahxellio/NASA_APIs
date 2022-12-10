@@ -37,31 +37,50 @@
             <TextBlock Text="Image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars"
                        TextWrapping="Wrap" TextAlignment="Center"/>
         </Label>
-        <Button x:Name="btnMars" Style="{StaticResource menuBtn}" Grid.Column="1" Grid.Row="0"></Button>
+        <Button x:Name="btnMars" Style="{StaticResource menuBtn}" Grid.Column="1" Grid.Row="0">
+            <Button.Background>
+                <ImageBrush x:Name="imgMars" ImageSource="C:\Users\AHX\source\repos\NASA_APIs\NASA_APIs.WPF\Images\Mars.jpg"/>
+            </Button.Background>
+        </Button>
         <!--#endregion-->
         <!--#region NeoWs-->
         <Label Grid.Row="0" Grid.Column="2" FontSize="22" HorizontalAlignment="Center"
                VerticalAlignment="Center" Margin="5,5,5,5">
             <TextBlock Text="Near Earth Object Web Service"
                        TextWrapping="Wrap" TextAlignment="Center"/>
+            
         </Label>
-        <Button x:Name="btnNeoWs" Style="{StaticResource menuBtn}" Grid.Column="2" Grid.Row="0"></Button>
+        <Button x:Name="btnNeoWs" Style="{StaticResource menuBtn}" Grid.Column="2" Grid.Row="0">
+            <Button.Background>
+                <ImageBrush x:Name="imgNeoWs" ImageSource="C:\Users\AHX\source\repos\NASA_APIs\NASA_APIs.WPF\Images\NeoWs.jpg"/>
+            </Button.Background>
+        </Button>
         <!--#endregion-->
         <!--#region TechPort-->
-        <Label Grid.Row="1" Grid.Column="0" FontSize="22" HorizontalAlignment="Center"
-               VerticalAlignment="Center">
-            <TextBlock Text="API to make NASA technology project data available in a machine-readable format"
-                       TextWrapping="Wrap" TextAlignment="Center"/>
-        </Label>
-        <Button x:Name="btnTechPort" Style="{StaticResource menuBtn}" Grid.Column="0" Grid.Row="1"></Button>
-        <!--#endregion-->
-        <!--#region TechPort Projects-->
-        <Label Grid.Row="1" Grid.Column="1" FontSize="22" HorizontalAlignment="Center"
+        <Label Grid.Row="1" Grid.Column="0" FontSize="22" 
+               HorizontalAlignment="Center"
                VerticalAlignment="Center" Margin="5,5,5,5">
             <TextBlock Text="API to make NASA technology project data available in a machine-readable format"
                        TextWrapping="Wrap" TextAlignment="Center"/>
         </Label>
-        <Button Style="{StaticResource menuBtn}" Grid.Column="1" Grid.Row="1"></Button>
+        <Button x:Name="btnTechPort" Style="{StaticResource menuBtn}" Grid.Column="0" Grid.Row="1">
+            <Button.Background>
+                <ImageBrush x:Name="imgTechPort" ImageSource="C:\Users\AHX\source\repos\NASA_APIs\NASA_APIs.WPF\Images\TechPort_Logo.jpg"/>
+            </Button.Background>
+        </Button>
+        <!--#endregion-->
+        <!--#region TechPort Projects-->
+        <Label Grid.Row="1" Grid.Column="1" FontSize="22" 
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center" Margin="5,5,5,5">
+            <TextBlock Text="API to make NASA technology project data available in a machine-readable format"
+                       TextWrapping="Wrap" TextAlignment="Center"/>
+        </Label>
+        <Button Style="{StaticResource menuBtn}" Grid.Column="1" Grid.Row="1">
+            <Button.Background>
+                <ImageBrush x:Name="imgTechPortProjects" ImageSource="C:\Users\AHX\source\repos\NASA_APIs\NASA_APIs.WPF\Images\TechPort_Logo.jpg"/>
+            </Button.Background>
+        </Button>
         <!--#endregion-->
         <!--#region Patents-->
         <Label Grid.Row="1" Grid.Column="2" FontSize="22" HorizontalAlignment="Center"
@@ -69,7 +88,11 @@
             <TextBlock Text="Patents, Software, and Tech Transfer Reports"
                        TextWrapping="Wrap" TextAlignment="Center"/>
         </Label>
-        <Button Style="{StaticResource menuBtn}" Grid.Column="2" Grid.Row="1"></Button>
+        <Button Style="{StaticResource menuBtn}" Grid.Column="2" Grid.Row="1">
+            <Button.Background>
+                <ImageBrush x:Name="imgPatents" ImageSource="C:\Users\AHX\source\repos\NASA_APIs\NASA_APIs.WPF\Images\Patents.jpg"/>
+            </Button.Background>
+        </Button>
         <!--#endregion-->
     </Grid>
 </Window>
