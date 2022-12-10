@@ -6,9 +6,6 @@
     <Application.Resources>
         <ResourceDictionary>
             <local:ServiceLocator x:Key="Locator"/>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Styles/MenuButtonStyle.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
