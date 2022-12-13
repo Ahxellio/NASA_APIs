@@ -4,95 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:i ="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        DataContext="{Binding MainModel, Source={StaticResource Locator}}"
         xmlns:local="clr-namespace:NASA_APIs.WPF.Views.Windows"
+        xmlns:vm="clr-namespace:NASA_APIs.WPF.ViewModels"
+        xmlns:views="clr-namespace:NASA_APIs.WPF.Views.UserControls"
+        xmlns:controls="clr-namespace:NASA_APIs.WPF.Controls"
+        xmlns:mainview="clr-namespace:NASA_APIs.WPF.Views.Windows"
         mc:Ignorable="d"
         Title="MainWindow" 
         Height="864" Width="1152">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <!--#region APOD-->
-        <Label Grid.Row="0" Grid.Column="0" FontSize="22" HorizontalAlignment="Center"
-               VerticalAlignment="Center" Margin="5,5,5,5">
-            <TextBlock Text="Astronomy Picture of the Day"
-                       TextWrapping="Wrap"/>
-        </Label>
-        <Button x:Name="btnAPOD" Style="{StaticResource menuBtn}" Grid.Column="0" Grid.Row="0">
-            <Button.Background>
-                <ImageBrush x:Name="imgAPOD" ImageSource="C:\Users\AHX\source\repos\NASA_APIs\NASA_APIs.WPF\Images\APOD.png"/>
-            </Button.Background>
-        </Button>
-        <!--#endregion-->
-        <!--#region Mars-->
-        <Label Grid.Row="0" Grid.Column="1" FontSize="22" HorizontalAlignment="Center"
-               VerticalAlignment="Center" Margin="5,5,5,5">
-            <TextBlock Text="Image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars"
-                       TextWrapping="Wrap" TextAlignment="Center"/>
-        </Label>
-        <Button x:Name="btnMars" Style="{StaticResource menuBtn}" Grid.Column="1" Grid.Row="0">
-            <Button.Background>
-                <ImageBrush x:Name="imgMars" ImageSource="C:\Users\AHX\source\repos\NASA_APIs\NASA_APIs.WPF\Images\Mars.jpg"/>
-            </Button.Background>
-        </Button>
-        <!--#endregion-->
-        <!--#region NeoWs-->
-        <Label Grid.Row="0" Grid.Column="2" FontSize="22" HorizontalAlignment="Center"
-               VerticalAlignment="Center" Margin="5,5,5,5">
-            <TextBlock Text="Near Earth Object Web Service"
-                       TextWrapping="Wrap" TextAlignment="Center"/>
-            
-        </Label>
-        <Button x:Name="btnNeoWs" Style="{StaticResource menuBtn}" Grid.Column="2" Grid.Row="0">
-            <Button.Background>
-                <ImageBrush x:Name="imgNeoWs" ImageSource="C:\Users\AHX\source\repos\NASA_APIs\NASA_APIs.WPF\Images\NeoWs.jpg"/>
-            </Button.Background>
-        </Button>
-        <!--#endregion-->
-        <!--#region TechPort-->
-        <Label Grid.Row="1" Grid.Column="0" FontSize="22" 
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center" Margin="5,5,5,5">
-            <TextBlock Text="API to make NASA technology project data available in a machine-readable format"
-                       TextWrapping="Wrap" TextAlignment="Center"/>
-        </Label>
-        <Button x:Name="btnTechPort" Style="{StaticResource menuBtn}" Grid.Column="0" Grid.Row="1">
-            <Button.Background>
-                <ImageBrush x:Name="imgTechPort" ImageSource="C:\Users\AHX\source\repos\NASA_APIs\NASA_APIs.WPF\Images\TechPort_Logo.jpg"/>
-            </Button.Background>
-        </Button>
-        <!--#endregion-->
-        <!--#region TechPort Projects-->
-        <Label Grid.Row="1" Grid.Column="1" FontSize="22" 
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center" Margin="5,5,5,5">
-            <TextBlock Text="API to make NASA technology project data available in a machine-readable format"
-                       TextWrapping="Wrap" TextAlignment="Center"/>
-        </Label>
-        <Button Style="{StaticResource menuBtn}" Grid.Column="1" Grid.Row="1">
-            <Button.Background>
-                <ImageBrush x:Name="imgTechPortProjects" ImageSource="C:\Users\AHX\source\repos\NASA_APIs\NASA_APIs.WPF\Images\TechPort_Logo.jpg"/>
-            </Button.Background>
-        </Button>
-        <!--#endregion-->
-        <!--#region Patents-->
-        <Label Grid.Row="1" Grid.Column="2" FontSize="22" HorizontalAlignment="Center"
-               VerticalAlignment="Center" Margin="5,5,5,5">
-            <TextBlock Text="Patents, Software, and Tech Transfer Reports"
-                       TextWrapping="Wrap" TextAlignment="Center"/>
-        </Label>
-        <Button Style="{StaticResource menuBtn}" Grid.Column="2" Grid.Row="1">
-            <Button.Background>
-                <ImageBrush x:Name="imgPatents" ImageSource="C:\Users\AHX\source\repos\NASA_APIs\NASA_APIs.WPF\Images\Patents.jpg"/>
-            </Button.Background>
-        </Button>
-        <!--#endregion-->
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type vm:ApodUserControlViewModel}">
+                <views:ApodUserControl/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:MenuViewModel}">
+                <controls:Menu/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:MarsUserControlViewModel}">
+                <views:MarsUserControl/>
+            </DataTemplate>
+        </Grid.Resources>
+        <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
+    
 </Window>

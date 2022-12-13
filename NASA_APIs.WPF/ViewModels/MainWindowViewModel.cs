@@ -5,23 +5,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using MathCore.CommandProcessor;
-using MathCore.WPF.Commands;
-using MathCore.WPF.ViewModels;
 using NASA_APIs.DAL.Entities;
 using NASA_APIs.Interfaces.Base.Repositories;
+using NASA_APIs.WPF.Infrastructure;
+using NASA_APIs.WPF.Stores;
+using NASA_APIs.WPF.ViewModels.Base;
 
 namespace NASA_APIs.WPF.ViewModels
 {
-    public class MainWindowViewModel : TitledViewModel
+    public class MainWindowViewModel : BaseVM
     {
         private readonly IRepository<DataSource> _DataSources;
+        private readonly NavigationStore _navigationStore;
 
-        public MainWindowViewModel(IRepository<DataSource> DataSources)
+        public MainWindowViewModel(NavigationStore navigationStore)
         {
-            Title = "MainWindow";
-            _DataSources = DataSources;
+            _navigationStore = navigationStore;
+            _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
+        private void OnCurrentViewModelChanged()
+        {
+            OnPropertyChanged(nameof(CurrentViewModel));
+        }
+
+        public BaseVM CurrentViewModel => _navigationStore.CurrentViewModel;
         public ObservableCollection<DataSource> DataSources { get; } = new();
 
 

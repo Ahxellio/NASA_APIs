@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="NASA_APIs.WPF.Views.UserControls.ApodUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NASA_APIs.WPF.Views.UserControls"
+             xmlns:mainview="clr-namespace:NASA_APIs.WPF.Views.Windows"
+             xmlns:vm="clr-namespace:NASA_APIs.WPF.ViewModels"
+             xmlns:controls="clr-namespace:NASA_APIs.WPF.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="864" d:DesignWidth="1152"
+             Background="Wheat">
+    <Grid>
+        <TextBlock Text="User Apod" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+        <Button Content="BAk" Width="100" Height="50" VerticalAlignment="Bottom" Command="{Binding MenuCommand}"
+                
+                Style="{StaticResource menuBtn}" Background="Black"/>
+    </Grid>
+</UserControl>
