@@ -14,12 +14,17 @@ namespace NASA_APIs.WPF.ViewModels
 {
     public class MenuViewModel : BaseVM
     {
-        public ICommand MarsControlCommand { get; }
-        public ICommand ApodControlCommand { get; }
-        public MenuViewModel(NavigationService navigationService)
+        public ICommand NavigateMarsControlCommand { get; }
+        public ICommand NavigateApodControlCommand { get; }
+        public MenuViewModel(NavigationStore navigationStore)
         {
-            MarsControlCommand = new NavigateCommand(navigationService);
-            ApodControlCommand = new NavigateCommand(navigationService);
+            NavigateApodControlCommand = new NavigateCommand<ApodMenuUserControlViewModel>
+                (new NavigationService<ApodMenuUserControlViewModel>
+                (navigationStore, () => new ApodMenuUserControlViewModel(navigationStore)));
+
+            NavigateMarsControlCommand = new NavigateCommand<MarsMenuUserControlViewModel>
+                (new NavigationService<MarsMenuUserControlViewModel>
+                (navigationStore, () => new MarsMenuUserControlViewModel(navigationStore)));
         }
     }
 }

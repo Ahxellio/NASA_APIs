@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NASA_APIs.WPF.Controls
+namespace NASA_APIs.WPF.Views.UserControls.Apod
 {
     /// <summary>
-    /// Логика взаимодействия для ApodView.xaml
+    /// Логика взаимодействия для ApodMenuUserControl.xaml
     /// </summary>
-    public partial class ApodView : UserControl
+    public partial class ApodMenuUserControl : UserControl
     {
-        public ApodView()
+        public ApodMenuUserControl()
         {
             InitializeComponent();
         }

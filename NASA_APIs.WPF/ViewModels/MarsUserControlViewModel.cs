@@ -13,10 +13,10 @@ namespace NASA_APIs.WPF.ViewModels
 {
     public class MarsUserControlViewModel : BaseVM
     {
-        public ICommand MenuCommand { get; }
-        public MarsUserControlViewModel(NavigationService navigationService)
+        public ICommand NavigateMarsCommand { get; }
+        public MarsUserControlViewModel()
         {
-            MenuCommand = new NavigateCommand(navigationService);
+            //NavigateMarsCommand = new NavigateCommand(navigationService);
         }
     }
 }

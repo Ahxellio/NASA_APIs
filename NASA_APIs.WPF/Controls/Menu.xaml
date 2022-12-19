@@ -24,7 +24,7 @@
                        TextWrapping="Wrap"/>
         </Label>
         <Button x:Name="btnAPOD" Style="{StaticResource menuBtn}" Grid.Column="0" Grid.Row="0"
-                Command="{Binding ApodControlCommand}" 
+                Command="{Binding NavigateApodControlCommand}" 
                >
         
             <Button.Background>
@@ -38,7 +38,7 @@
             <TextBlock Text="Image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars"
                        TextWrapping="Wrap" TextAlignment="Center"/>
         </Label>
-        <Button x:Name="btnMars" Command="{Binding MarsControlCommand}" Style="{StaticResource menuBtn}" Grid.Column="1" Grid.Row="0">
+        <Button x:Name="btnMars" Command="{Binding NavigateMarsControlCommand}" Style="{StaticResource menuBtn}" Grid.Column="1" Grid.Row="0">
             <Button.Background>
                 <ImageBrush x:Name="imgMars" ImageSource="C:\Users\AHX\source\repos\NASA_APIs\NASA_APIs.WPF\Images\Mars.jpg"/>
             </Button.Background>

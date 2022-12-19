@@ -9,15 +9,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NASA_APIs.WPF.Infrastructure
+namespace NASA_APIs.WPF.Infrastructure.Navigations
 {
-    public class NavigateCommand<TViewModel> : Command 
-        where TViewModel : BaseVM
+    public class MenuNavigateCommand : Command
     {
-        private readonly NavigationService<TViewModel> _navigationService;
+        private readonly MenuViewModel _viewModel;
+        private readonly NavigationService<BaseVM> _navigationService;
 
-        public NavigateCommand(NavigationService<TViewModel> navigationService)
+        public MenuNavigateCommand(MenuViewModel viewModel, NavigationService<BaseVM> navigationService)
         {
+            _viewModel = viewModel;
             _navigationService = navigationService;
         }
 

@@ -18,7 +18,6 @@ namespace NASA_APIs.WPF
     {
         private static IHost _Hosting;
 
-        private readonly NavigationStore _navigationStore;
         public static IHost Hosting => _Hosting ??= CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
 
         public static IServiceProvider Services => Hosting.Services;
@@ -35,16 +34,13 @@ namespace NASA_APIs.WPF
                 client.BaseAddress = new Uri($"{host.Configuration["WebAPI"]}/api/DataSources/");
             });
         }
-        public App()
-        {
-           _navigationStore = new NavigationStore();
-        }
         protected override async void OnStartup(StartupEventArgs e)
         {
-            _navigationStore.CurrentViewModel = CreateMenuViewModel();
+            NavigationStore navigationStore = new NavigationStore();
+            navigationStore.CurrentViewModel = new MenuViewModel(navigationStore);
             MainWindow = new MainWindow()
             {
-                DataContext = new MainWindowViewModel(_navigationStore)
+                DataContext = new MainWindowViewModel(navigationStore)
             };
             MainWindow.Show();
             var host = Hosting;
@@ -57,17 +53,17 @@ namespace NASA_APIs.WPF
             base.OnExit(e);
             await host.StopAsync().ConfigureAwait(false);
         }
-        private MenuViewModel CreateMenuViewModel()
-        {
-            return new MenuViewModel(new NavigationService(_navigationStore, CreateMarsViewModel));
-        }
-        private ApodUserControlViewModel CreateApodViewModel()
-        {
-            return new ApodUserControlViewModel(new NavigationService (_navigationStore, CreateMenuViewModel));
-        }
-        private MarsUserControlViewModel CreateMarsViewModel()
-        {
-            return new MarsUserControlViewModel(new NavigationService(_navigationStore, CreateMenuViewModel));
-        }
+        //private MenuViewModel CreateMenuViewModel()
+        //{
+        //    return new MenuViewModel(new NavigationService(_navigationStore, CreateMarsViewModel));
+        //}
+        //private ApodUserControlViewModel CreateApodViewModel()
+        //{
+        //    return new ApodUserControlViewModel(new NavigationService (_navigationStore, CreateMenuViewModel));
+        //}
+        //private MarsUserControlViewModel CreateMarsViewModel()
+        //{
+        //    return new MarsUserControlViewModel(new NavigationService(_navigationStore, CreateMenuViewModel));
+        //}
     }
 }

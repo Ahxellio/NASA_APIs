@@ -31,10 +31,10 @@ namespace NASA_APIs.WPF.ViewModels
                 DataSources.Add(source);
         }
         private readonly NavigationStore _navigationStore;
-        public ICommand MenuCommand { get; }
-        public ApodUserControlViewModel(NavigationService navigationService)
+        public ICommand NavigateApodCommand { get; }
+        public ApodUserControlViewModel()
         {
-            MenuCommand = new NavigateCommand(navigationService);
+            //NavigateApodCommand = new NavigateCommand(navigationService);
             LoadDataSourceCommand = new LambdaCommand(OnLoadDataSourceCommandExecuted, CanLoadDataSourceCommandExecute);
         }
     }

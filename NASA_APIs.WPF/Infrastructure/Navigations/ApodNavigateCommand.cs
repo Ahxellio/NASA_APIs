@@ -2,28 +2,29 @@
 using NASA_APIs.WPF.Services;
 using NASA_APIs.WPF.Stores;
 using NASA_APIs.WPF.ViewModels;
-using NASA_APIs.WPF.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NASA_APIs.WPF.Infrastructure
+namespace NASA_APIs.WPF.Infrastructure.Navigations
 {
-    public class NavigateCommand<TViewModel> : Command 
-        where TViewModel : BaseVM
+    public class ApodNavigateCommand : Command
     {
-        private readonly NavigationService<TViewModel> _navigationService;
+        private readonly ApodUserControlViewModel _viewModel;
+        private readonly NavigationService<MenuViewModel> _navigationService;
 
-        public NavigateCommand(NavigationService<TViewModel> navigationService)
+        public ApodNavigateCommand(ApodUserControlViewModel viewModel, NavigationService<MenuViewModel> navigationService)
         {
+            _viewModel = viewModel;
             _navigationService = navigationService;
         }
 
         public override void Execute(object? parameter)
         {
             _navigationService.Navigate();
+            // Navigate to Menu
         }
     }
 }

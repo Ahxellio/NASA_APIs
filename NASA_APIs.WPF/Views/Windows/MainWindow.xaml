@@ -6,7 +6,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NASA_APIs.WPF.Views.Windows"
         xmlns:vm="clr-namespace:NASA_APIs.WPF.ViewModels"
-        xmlns:views="clr-namespace:NASA_APIs.WPF.Views.UserControls"
+        xmlns:viewsapod="clr-namespace:NASA_APIs.WPF.Views.UserControls.Apod"
+        xmlns:viewsmars="clr-namespace:NASA_APIs.WPF.Views.UserControls.Mars"
         xmlns:controls="clr-namespace:NASA_APIs.WPF.Controls"
         xmlns:mainview="clr-namespace:NASA_APIs.WPF.Views.Windows"
         mc:Ignorable="d"
@@ -14,14 +15,14 @@
         Height="864" Width="1152">
     <Grid>
         <Grid.Resources>
-            <DataTemplate DataType="{x:Type vm:ApodUserControlViewModel}">
-                <views:ApodUserControl/>
+            <DataTemplate DataType="{x:Type vm:ApodMenuUserControlViewModel}">
+                <viewsapod:ApodMenuUserControl/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type vm:MenuViewModel}">
                 <controls:Menu/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type vm:MarsUserControlViewModel}">
-                <views:MarsUserControl/>
+            <DataTemplate DataType="{x:Type vm:MarsMenuUserControlViewModel}">
+                <viewsmars:MarsMenuUserControl/>
             </DataTemplate>
         </Grid.Resources>
         <ContentControl Content="{Binding CurrentViewModel}"/>
