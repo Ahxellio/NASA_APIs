@@ -8,6 +8,10 @@
         xmlns:vm="clr-namespace:NASA_APIs.WPF.ViewModels"
         xmlns:viewsapod="clr-namespace:NASA_APIs.WPF.Views.UserControls.Apod"
         xmlns:viewsmars="clr-namespace:NASA_APIs.WPF.Views.UserControls.Mars"
+        xmlns:viewsneows="clr-namespace:NASA_APIs.WPF.Views.UserControls.NeoWs"
+        xmlns:viewstechport="clr-namespace:NASA_APIs.WPF.Views.UserControls.TechPort"
+        xmlns:viewstechportpr="clr-namespace:NASA_APIs.WPF.Views.UserControls.TechPortProjects"
+        xmlns:viewstechtranf="clr-namespace:NASA_APIs.WPF.Views.UserControls.TechTransfer"
         xmlns:controls="clr-namespace:NASA_APIs.WPF.Controls"
         xmlns:mainview="clr-namespace:NASA_APIs.WPF.Views.Windows"
         mc:Ignorable="d"
@@ -23,6 +27,18 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type vm:MarsMenuUserControlViewModel}">
                 <viewsmars:MarsMenuUserControl/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:NeoWsMenuUserControlViewModel}">
+                <viewsneows:NeoWsMenuUserControl/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:TechPortMenuUserControlViewModel}">
+                <viewstechport:TechPortMenuUserControl/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:TechPortProjectsMenuUserControlViewModel}">
+                <viewstechportpr:TechPortProjectsMenuUserControl/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:TechTransferMenuUserControlViewModel}">
+                <viewstechtranf:TechTransferMenuUserControl/>
             </DataTemplate>
         </Grid.Resources>
         <ContentControl Content="{Binding CurrentViewModel}"/>

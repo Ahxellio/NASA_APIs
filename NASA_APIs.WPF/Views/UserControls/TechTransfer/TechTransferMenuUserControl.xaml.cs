@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NASA_APIs.WPF.Views.UserControls
+namespace NASA_APIs.WPF.Views.UserControls.TechTransfer
 {
     /// <summary>
-    /// Логика взаимодействия для MarsUserControl.xaml
+    /// Логика взаимодействия для TechTransferMenuUserControl.xaml
     /// </summary>
-    public partial class MarsUserControl : UserControl
+    public partial class TechTransferMenuUserControl : UserControl
     {
-        public MarsUserControl()
+        public TechTransferMenuUserControl()
         {
             InitializeComponent();
         }

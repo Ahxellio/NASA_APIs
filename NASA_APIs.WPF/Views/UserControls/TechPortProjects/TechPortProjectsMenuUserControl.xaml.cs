@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NASA_APIs.WPF.Views.UserControls
+namespace NASA_APIs.WPF.Views.UserControls.TechPortProjects
 {
     /// <summary>
-    /// Логика взаимодействия для ApodUserControl.xaml
+    /// Логика взаимодействия для TechPortProjectsMenuUserControl.xaml
     /// </summary>
-    public partial class ApodUserControl : UserControl
+    public partial class TechPortProjectsMenuUserControl : UserControl
     {
-        public ApodUserControl()
+        public TechPortProjectsMenuUserControl()
         {
             InitializeComponent();
         }

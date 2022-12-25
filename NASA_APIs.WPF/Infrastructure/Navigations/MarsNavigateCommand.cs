@@ -12,10 +12,10 @@ namespace NASA_APIs.WPF.Infrastructure.Navigations
 {
     public class MarsNavigateCommand : Command
     {
-        private readonly MarsUserControlViewModel _viewModel;
+        private readonly MarsMenuUserControlViewModel _viewModel;
         private readonly NavigationService<MenuViewModel> _navigationService;
 
-        public MarsNavigateCommand(MarsUserControlViewModel viewModel, NavigationService<MenuViewModel> navigationService)
+        public MarsNavigateCommand(MarsMenuUserControlViewModel viewModel, NavigationService<MenuViewModel> navigationService)
         {
             _viewModel = viewModel;
             _navigationService = navigationService;

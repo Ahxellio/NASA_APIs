@@ -12,10 +12,10 @@ namespace NASA_APIs.WPF.Infrastructure.Navigations
 {
     public class ApodNavigateCommand : Command
     {
-        private readonly ApodUserControlViewModel _viewModel;
+        private readonly ApodMenuUserControlViewModel _viewModel;
         private readonly NavigationService<MenuViewModel> _navigationService;
 
-        public ApodNavigateCommand(ApodUserControlViewModel viewModel, NavigationService<MenuViewModel> navigationService)
+        public ApodNavigateCommand(ApodMenuUserControlViewModel viewModel, NavigationService<MenuViewModel> navigationService)
         {
             _viewModel = viewModel;
             _navigationService = navigationService;
