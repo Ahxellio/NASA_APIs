@@ -22,6 +22,12 @@
             <DataTemplate DataType="{x:Type vm:ApodMenuUserControlViewModel}">
                 <viewsapod:ApodMenuUserControl/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:ApodSearchByCountChoiceUserControlViewModel}">
+                <viewsapod:ApodSearchByCountChoiceUserControl/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:ApodSerachByCountViewUserControlViewModel}">
+                <viewsapod:ApodSerachByCountViewUserControl/>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type vm:MenuViewModel}">
                 <controls:Menu/>
             </DataTemplate>

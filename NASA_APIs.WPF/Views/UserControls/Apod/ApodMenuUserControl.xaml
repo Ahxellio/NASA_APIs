@@ -4,13 +4,49 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NASA_APIs.WPF.Views.UserControls.Apod"
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="Wheat">
+             d:DesignHeight="450" d:DesignWidth="800" Background="DimGray">
     <Grid>
-        <TextBlock Text="User Apod" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
-        <Button Content="BAk" Width="100" Height="50" VerticalAlignment="Bottom" Command="{Binding NavigateMenuCommand}"
-                
-                Style="{StaticResource menuBtn}" Background="Black"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0" Grid.Row="0" Style="{StaticResource dashboardBtn}" VerticalAlignment="Center" HorizontalAlignment="Left"
+                Command="{Binding NavigateMenuCommand}">
+            <fa:IconImage Icon="Backward" Style="{StaticResource btnIcon}"/>
+            <Button.ToolTip>
+                Back To Main Menu
+            </Button.ToolTip>
+        </Button>
+
+        <Button Grid.Column="0" Grid.Row="2" Style="{StaticResource menuBtn}"
+                Command="{Binding NavigateApodChoiceViewCommand}">
+            
+        </Button>
+        <Label Grid.Row="1" Grid.Column="0" FontSize="22" HorizontalAlignment="Center"
+               VerticalAlignment="Center" Margin="5,5,5,5">
+            <TextBlock Text="Search for the desired number of articles of any date"
+                       TextWrapping="Wrap" TextAlignment="Center"/>
+        </Label>
+        <Button Grid.Column="1" Grid.Row="2" Style="{StaticResource menuBtn}"></Button>
+        <Label Grid.Row="1" Grid.Column="1" FontSize="22" HorizontalAlignment="Center"
+               VerticalAlignment="Center" Margin="5,5,5,5">
+            <TextBlock Text="Search for all articles for a certain period"
+                       TextWrapping="Wrap" TextAlignment="Center"/>
+        </Label>
+        <Button Grid.Column="2" Grid.Row="2" Style="{StaticResource menuBtn}"></Button>
+        <Label Grid.Row="1" Grid.Column="2" FontSize="22" HorizontalAlignment="Center"
+               VerticalAlignment="Center" Margin="5,5,5,5">
+            <TextBlock Text="Search for all articles for a certain day"
+                       TextWrapping="Wrap" TextAlignment="Center"/>
+        </Label>
+
 
     </Grid>
 </UserControl>

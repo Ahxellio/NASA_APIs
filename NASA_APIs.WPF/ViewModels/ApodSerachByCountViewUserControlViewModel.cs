@@ -11,11 +11,11 @@ using System.Windows.Input;
 
 namespace NASA_APIs.WPF.ViewModels
 {
-    public class ApodMenuUserControlViewModel : BaseVM
+    public class ApodSerachByCountViewUserControlViewModel : BaseVM
     {
-        public ICommand NavigateApodChoiceViewCommand { get; }
         public ICommand NavigateMenuCommand { get; }
-        public ApodMenuUserControlViewModel(NavigationStore navigationStore)
+        public ICommand NavigateApodChoiceViewCommand { get; }
+        public ApodSerachByCountViewUserControlViewModel(NavigationStore navigationStore)
         {
             NavigateMenuCommand = new NavigateCommand<MenuViewModel>
                (new NavigationService<MenuViewModel>
