@@ -2,7 +2,9 @@
 using NASA_APIs.WPF.Infrastructure;
 using NASA_APIs.WPF.Services;
 using NASA_APIs.WPF.Stores;
+using NASA_APIs.WPF.ViewModels.Apod;
 using NASA_APIs.WPF.ViewModels.Base;
+using NASA_APIs.WPF.ViewModels.Mars;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace NASA_APIs.WPF.ViewModels
+namespace NASA_APIs.WPF.ViewModels.Apod
 {
     public class ApodSearchByCountChoiceUserControlViewModel : BaseVM
     {

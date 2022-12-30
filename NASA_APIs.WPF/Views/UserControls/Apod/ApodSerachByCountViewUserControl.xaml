@@ -4,9 +4,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NASA_APIs.WPF.Views.UserControls.Apod"
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="DimGray">
     <Grid>
-            
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Column="0" Grid.Row="0" Style="{StaticResource dashboardBtn}" VerticalAlignment="Center" HorizontalAlignment="Left"
+                Command="{Binding NavigateMenuCommand}">
+            <fa:IconImage Icon="Backward" Style="{StaticResource btnIcon}"/>
+            <Button.ToolTip>
+                Back To Main Menu
+            </Button.ToolTip>
+        </Button>
     </Grid>
 </UserControl>

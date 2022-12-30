@@ -7,18 +7,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
-namespace NASA_APIs.WPF.ViewModels
+namespace NASA_APIs.WPF.ViewModels.Apod
 {
-    public class MarsMenuUserControlViewModel : BaseVM
+    public class ApodSearchForPeriodChoiceUserControlViewModel : BaseVM
     {
         public ICommand NavigateMenuCommand { get; }
-        public MarsMenuUserControlViewModel(NavigationStore navigationStore)
+
+        public ApodSearchForPeriodChoiceUserControlViewModel(NavigationStore navigationStore)
         {
             NavigateMenuCommand = new NavigateCommand<MenuViewModel>
-                (new NavigationService<MenuViewModel>
-                (navigationStore, () => new MenuViewModel(navigationStore)));
+               (new NavigationService<MenuViewModel>
+               (navigationStore, () => new MenuViewModel(navigationStore)));
         }
     }
 }

@@ -24,28 +24,30 @@
                 Back To Main Menu
             </Button.ToolTip>
         </Button>
-
-        <Button Grid.Column="0" Grid.Row="2" Style="{StaticResource menuBtn}"
-                Command="{Binding NavigateApodChoiceViewCommand}">
-            
-        </Button>
         <Label Grid.Row="1" Grid.Column="0" FontSize="22" HorizontalAlignment="Center"
                VerticalAlignment="Center" Margin="5,5,5,5">
             <TextBlock Text="Search for the desired number of articles of any date"
                        TextWrapping="Wrap" TextAlignment="Center"/>
         </Label>
-        <Button Grid.Column="1" Grid.Row="2" Style="{StaticResource menuBtn}"></Button>
+
+        <Button Grid.Column="0" Grid.Row="2" Style="{StaticResource menuBtn}"
+                Command="{Binding NavigateApodCountChoiceCommand}">
+
+        </Button>
         <Label Grid.Row="1" Grid.Column="1" FontSize="22" HorizontalAlignment="Center"
                VerticalAlignment="Center" Margin="5,5,5,5">
             <TextBlock Text="Search for all articles for a certain period"
                        TextWrapping="Wrap" TextAlignment="Center"/>
         </Label>
-        <Button Grid.Column="2" Grid.Row="2" Style="{StaticResource menuBtn}"></Button>
+        <Button Grid.Column="1" Grid.Row="2" Style="{StaticResource menuBtn}"
+                Command="{Binding NavigateApodPeriodChoiceCommand}"></Button>
         <Label Grid.Row="1" Grid.Column="2" FontSize="22" HorizontalAlignment="Center"
                VerticalAlignment="Center" Margin="5,5,5,5">
             <TextBlock Text="Search for all articles for a certain day"
                        TextWrapping="Wrap" TextAlignment="Center"/>
         </Label>
+        <Button Grid.Column="2" Grid.Row="2" Style="{StaticResource menuBtn}"
+                Command="{Binding NavigateApodDayChoiceCommand}"></Button>
 
 
     </Grid>
