@@ -6,22 +6,41 @@
              xmlns:local="clr-namespace:NASA_APIs.WPF.Views.UserControls.NeoWs"
              xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="Aqua">
+             d:DesignHeight="450" d:DesignWidth="800" Background="DimGray">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
             <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Style="{StaticResource dashboardBtn}" VerticalAlignment="Bottom" 
-                Command="{Binding NavigateMenuCommand}" Margin="5,5,5,5"
-                VerticalContentAlignment="Center" HorizontalContentAlignment="Left">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0" Grid.Row="0" Style="{StaticResource dashboardBtn}" VerticalAlignment="Center" HorizontalAlignment="Left"
+                Command="{Binding NavigateMenuCommand}">
             <fa:IconImage Icon="Backward" Style="{StaticResource btnIcon}"/>
             <Button.ToolTip>
                 Back To Main Menu
             </Button.ToolTip>
         </Button>
-        <TextBlock Grid.Row="2" Text="NeoWs" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
-       
+        <Label Grid.Row="1" Grid.Column="0" FontSize="22" HorizontalAlignment="Center"
+               VerticalAlignment="Center" Margin="5,5,5,5">
+            <TextBlock Text="Viewing common asteroid datasets"
+                       TextWrapping="Wrap" TextAlignment="Center"/>
+        </Label>
+
+        <Button Grid.Column="0" Grid.Row="2" Style="{StaticResource menuBtn}"
+                Command="{Binding NavigateAllNeoWsCommand }">
+
+        </Button>
+        <Label Grid.Row="1" Grid.Column="1" FontSize="22" HorizontalAlignment="Center"
+               VerticalAlignment="Center" Margin="5,5,5,5">
+            <TextBlock Text="Lookup a specific Asteroid based on its NASA JPL small body (SPK-ID) ID"
+                       TextWrapping="Wrap" TextAlignment="Center"/>
+        </Label>
+        <Button Grid.Column="1" Grid.Row="2" Style="{StaticResource menuBtn}"
+                Command="{Binding NavigateByIdCommand}"></Button>
+
+
     </Grid>
 </UserControl>

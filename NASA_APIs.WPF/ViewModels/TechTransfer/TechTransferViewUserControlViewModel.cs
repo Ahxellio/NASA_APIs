@@ -9,12 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace NASA_APIs.WPF.ViewModels
+namespace NASA_APIs.WPF.ViewModels.TechTransfer
 {
-    public class TechPortMenuUserControlViewModel : BaseVM
+    public class TechTransferViewUserControlViewModel : BaseVM
     {
         public ICommand NavigateMenuCommand { get; }
-        public TechPortMenuUserControlViewModel(NavigationStore navigationStore)
+        public TechTransferViewUserControlViewModel(NavigationStore navigationStore)
         {
             NavigateMenuCommand = new NavigateCommand<MenuViewModel>
                (new NavigationService<MenuViewModel>

@@ -2,6 +2,7 @@
 using NASA_APIs.WPF.Services;
 using NASA_APIs.WPF.Stores;
 using NASA_APIs.WPF.ViewModels.Base;
+using NASA_APIs.WPF.Views.UserControls.Apod;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,9 +31,9 @@ namespace NASA_APIs.WPF.ViewModels.Apod
             NavigateApodMenuCommand = new NavigateCommand<ApodMenuUserControlViewModel>
                (new NavigationService<ApodMenuUserControlViewModel>
                (navigationStore, () => new ApodMenuUserControlViewModel(navigationStore)));
-            NavigateApodViewCommand = new NavigateCommand<ApodSerachByCountViewUserControlViewModel>
-               (new NavigationService<ApodSerachByCountViewUserControlViewModel>
-               (navigationStore, () => new ApodSerachByCountViewUserControlViewModel(navigationStore)));
+            NavigateApodViewCommand = new NavigateCommand<ApodSearchViewUserControlViewModel>
+               (new NavigationService<ApodSearchViewUserControlViewModel>
+               (navigationStore, () => new ApodSearchViewUserControlViewModel(navigationStore)));
 
         }
     }

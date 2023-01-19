@@ -5,6 +5,9 @@ using NASA_APIs.WPF.Stores;
 using NASA_APIs.WPF.ViewModels.Apod;
 using NASA_APIs.WPF.ViewModels.Base;
 using NASA_APIs.WPF.ViewModels.Mars;
+using NASA_APIs.WPF.ViewModels.NeoWs;
+using NASA_APIs.WPF.ViewModels.Techport;
+using NASA_APIs.WPF.ViewModels.TechTransfer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,9 +45,6 @@ namespace NASA_APIs.WPF.ViewModels
                 (new NavigationService<TechPortMenuUserControlViewModel>
                 (navigationStore, () => new TechPortMenuUserControlViewModel(navigationStore)));
 
-            NavigateTechPortProjectsControlCommand = new NavigateCommand<TechPortProjectsMenuUserControlViewModel>
-                (new NavigationService<TechPortProjectsMenuUserControlViewModel>
-                (navigationStore, () => new TechPortProjectsMenuUserControlViewModel(navigationStore)));
 
             NavigateTechTransferControlCommand = new NavigateCommand<TechTransferMenuUserControlViewModel>
                 (new NavigationService<TechTransferMenuUserControlViewModel>

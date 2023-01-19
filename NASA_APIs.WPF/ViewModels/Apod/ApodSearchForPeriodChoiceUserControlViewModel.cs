@@ -15,12 +15,16 @@ namespace NASA_APIs.WPF.ViewModels.Apod
     public class ApodSearchForPeriodChoiceUserControlViewModel : BaseVM
     {
         public ICommand NavigateMenuCommand { get; }
+        public ICommand NavigateApodViewCommand { get; }
 
         public ApodSearchForPeriodChoiceUserControlViewModel(NavigationStore navigationStore)
         {
             NavigateMenuCommand = new NavigateCommand<MenuViewModel>
                (new NavigationService<MenuViewModel>
-               (navigationStore, () => new MenuViewModel(navigationStore)));
+               (navigationStore, () => new MenuViewModel(navigationStore))); 
+            NavigateApodViewCommand = new NavigateCommand<ApodSearchViewUserControlViewModel>
+               (new NavigationService<ApodSearchViewUserControlViewModel>
+               (navigationStore, () => new ApodSearchViewUserControlViewModel(navigationStore)));
         }
     }
 }

@@ -9,20 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace NASA_APIs.WPF.ViewModels.Apod
+namespace NASA_APIs.WPF.ViewModels.NeoWs
 {
-    public class ApodSearchForDayChoiceUserControlViewModel : BaseVM
+    public class NeoWsViewUserControlViewModel : BaseVM
     {
         public ICommand NavigateMenuCommand { get; }
-        public ICommand NavigateApodViewCommand { get; }
-        public ApodSearchForDayChoiceUserControlViewModel(NavigationStore navigationStore)
+        public NeoWsViewUserControlViewModel(NavigationStore navigationStore)
         {
             NavigateMenuCommand = new NavigateCommand<MenuViewModel>
                (new NavigationService<MenuViewModel>
                (navigationStore, () => new MenuViewModel(navigationStore)));
-            NavigateApodViewCommand = new NavigateCommand<ApodSearchViewUserControlViewModel>
-               (new NavigationService<ApodSearchViewUserControlViewModel>
-               (navigationStore, () => new ApodSearchViewUserControlViewModel(navigationStore)));
         }
     }
 }

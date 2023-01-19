@@ -6,21 +6,40 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NASA_APIs.WPF.Views.UserControls.TechTransfer"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="Crimson">
+             d:DesignHeight="450" d:DesignWidth="800" Background="DimGray">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
             <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Style="{StaticResource dashboardBtn}" VerticalAlignment="Bottom" 
-                Command="{Binding NavigateMenuCommand}" Margin="5,5,5,5"
-                VerticalContentAlignment="Center" HorizontalContentAlignment="Left">
+        <Button Grid.Column="0" Grid.Row="0" Style="{StaticResource dashboardBtn}" VerticalAlignment="Center" HorizontalAlignment="Left"
+                Command="{Binding NavigateMenuCommand}">
             <fa:IconImage Icon="Backward" Style="{StaticResource btnIcon}"/>
             <Button.ToolTip>
                 Back To Main Menu
             </Button.ToolTip>
         </Button>
-        <TextBlock Grid.Row="2" Text="TechTranfer" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+
+        <Grid Grid.Row="1" Margin="250,200,250,250" VerticalAlignment="Center"
+              HorizontalAlignment="Center" Width="250" Height="150">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <TextBlock Text="Enter the desired soft" Foreground="AliceBlue"/>
+            </Label>
+
+            <TextBox Grid.Row="0" Text="{Binding Text}" Height="50" FontSize="36" FontStyle="Normal" Background="Black" 
+                     Foreground="AliceBlue" TextAlignment="Center" />
+            <Label Grid.Row="1" FontSize="22" HorizontalAlignment="Center"
+               VerticalAlignment="Center" Margin="5,5,5,5">
+                <TextBlock Text="Search for this soft"
+                       TextWrapping="Wrap" TextAlignment="Center"/>
+            </Label>
+            <Button Grid.Row="1" FontSize="22" Background="Transparent"  Style="{StaticResource defaultBtn}" 
+                    Command="{Binding NavigateTechTransferViewCommand}">
+            </Button>
+        </Grid>
     </Grid>
 </UserControl>

@@ -9,16 +9,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace NASA_APIs.WPF.ViewModels
+namespace NASA_APIs.WPF.ViewModels.Techport
 {
-    public class NeoWsMenuUserControlViewModel : BaseVM
+    public class TechPortSearchByIdUserControlViewModel : BaseVM
     {
         public ICommand NavigateMenuCommand { get; }
-        public NeoWsMenuUserControlViewModel(NavigationStore navigationStore)
+        public ICommand NavigateTechPortViewCommand { get; }
+        public TechPortSearchByIdUserControlViewModel(NavigationStore navigationStore)
         {
             NavigateMenuCommand = new NavigateCommand<MenuViewModel>
                (new NavigationService<MenuViewModel>
                (navigationStore, () => new MenuViewModel(navigationStore)));
+            NavigateTechPortViewCommand = new NavigateCommand<TechPortViewUserControlViewModel>
+                (new NavigationService<TechPortViewUserControlViewModel>
+                (navigationStore, () => new TechPortViewUserControlViewModel(navigationStore)));
         }
     }
 }

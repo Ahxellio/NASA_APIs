@@ -1,10 +1,10 @@
-﻿<UserControl x:Class="NASA_APIs.WPF.Views.UserControls.Apod.ApodSearchByCountChoiceUserControl"
+﻿<UserControl x:Class="NASA_APIs.WPF.Views.UserControls.NeoWs.NeoWsSearchByIdUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
-             xmlns:local="clr-namespace:NASA_APIs.WPF.Views.UserControls.Apod"
+             xmlns:local="clr-namespace:NASA_APIs.WPF.Views.UserControls.NeoWs"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="DimGray">
     <Grid>
@@ -19,14 +19,7 @@
                 Back To Main Menu
             </Button.ToolTip>
         </Button>
-        <!--<Button Grid.Column="0" Margin="27,4,4,4" Grid.Row="0" Style="{StaticResource dashboardBtn}" VerticalAlignment="Center" HorizontalAlignment="Left"
-                Command="{Binding NavigateApodMenuCommand}">
-            <fa:IconImage Icon="ArrowRotateBack" Style="{StaticResource btnIcon}"/>
-            <Button.ToolTip>
-                Back To Apod Menu
-            </Button.ToolTip>
-        </Button>-->
-        
+
         <Grid Grid.Row="1" Margin="250,200,250,250" VerticalAlignment="Center"
               HorizontalAlignment="Center" Width="250" Height="150">
             <Grid.RowDefinitions>
@@ -34,7 +27,7 @@
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center">
-                <TextBlock Text="Enter the desired quantity" Foreground="AliceBlue"/>
+                <TextBlock Text="Enter the desired id" Foreground="AliceBlue"/>
             </Label>
 
             <TextBox Grid.Row="0" Text="{Binding Text}" 
@@ -43,12 +36,14 @@
                      />
             <Label Grid.Row="1" FontSize="22" HorizontalAlignment="Center"
                VerticalAlignment="Center" Margin="5,5,5,5">
-                <TextBlock Text="Search for articles"
+                <TextBlock Text="Search for id"
                        TextWrapping="Wrap" TextAlignment="Center"/>
             </Label>
             <Button Grid.Row="1" FontSize="22" Background="Transparent"  Style="{StaticResource defaultBtn}" 
-                    Command="{Binding NavigateApodViewCommand}">
+                    Command="{Binding NavigateNeoWsViewCommand}">
             </Button>
         </Grid>
+
+
     </Grid>
 </UserControl>

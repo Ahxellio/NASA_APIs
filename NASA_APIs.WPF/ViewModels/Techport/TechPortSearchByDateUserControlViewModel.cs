@@ -9,20 +9,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace NASA_APIs.WPF.ViewModels.Apod
+namespace NASA_APIs.WPF.ViewModels.Techport
 {
-    public class ApodSearchForDayChoiceUserControlViewModel : BaseVM
+    public class TechPortSearchByDateUserControlViewModel : BaseVM
     {
         public ICommand NavigateMenuCommand { get; }
-        public ICommand NavigateApodViewCommand { get; }
-        public ApodSearchForDayChoiceUserControlViewModel(NavigationStore navigationStore)
+        public ICommand NavigateTechPortViewCommand { get; }
+        public TechPortSearchByDateUserControlViewModel(NavigationStore navigationStore)
         {
             NavigateMenuCommand = new NavigateCommand<MenuViewModel>
                (new NavigationService<MenuViewModel>
                (navigationStore, () => new MenuViewModel(navigationStore)));
-            NavigateApodViewCommand = new NavigateCommand<ApodSearchViewUserControlViewModel>
-               (new NavigationService<ApodSearchViewUserControlViewModel>
-               (navigationStore, () => new ApodSearchViewUserControlViewModel(navigationStore)));
+            NavigateTechPortViewCommand = new NavigateCommand<TechPortViewUserControlViewModel>
+                (new NavigationService<TechPortViewUserControlViewModel>
+                (navigationStore, () => new TechPortViewUserControlViewModel(navigationStore)));
         }
     }
 }

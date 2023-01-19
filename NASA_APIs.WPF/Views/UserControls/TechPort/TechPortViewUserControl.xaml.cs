@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NASA_APIs.WPF.Views.UserControls.Apod
+namespace NASA_APIs.WPF.Views.UserControls.TechPort
 {
     /// <summary>
-    /// Логика взаимодействия для ApodSerachByCountViewUserControl.xaml
+    /// Логика взаимодействия для TechPortViewUserControl.xaml
     /// </summary>
-    public partial class ApodSerachByCountViewUserControl : UserControl
+    public partial class TechPortViewUserControl : UserControl
     {
-        public ApodSerachByCountViewUserControl()
+        public TechPortViewUserControl()
         {
             InitializeComponent();
         }

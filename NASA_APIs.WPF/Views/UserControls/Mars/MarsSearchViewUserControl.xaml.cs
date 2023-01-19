@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NASA_APIs.WPF.Views.UserControls.TechPortProjects
+namespace NASA_APIs.WPF.Views.UserControls.Mars
 {
     /// <summary>
-    /// Логика взаимодействия для TechPortProjectsMenuUserControl.xaml
+    /// Логика взаимодействия для MarsSearchViewUserControl.xaml
     /// </summary>
-    public partial class TechPortProjectsMenuUserControl : UserControl
+    public partial class MarsSearchViewUserControl : UserControl
     {
-        public TechPortProjectsMenuUserControl()
+        public MarsSearchViewUserControl()
         {
             InitializeComponent();
         }
