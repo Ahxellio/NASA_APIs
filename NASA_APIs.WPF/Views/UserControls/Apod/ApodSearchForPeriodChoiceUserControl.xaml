@@ -45,7 +45,7 @@
             </Label>
 
             <TextBox Grid.Column="0" Grid.Row="0" 
-                     Text="{Binding Text}" 
+                     Text="{Binding StartPeriod}" 
                      Height="50" FontSize="36" 
                      FontStyle="Normal" 
                      Background="Black" 
@@ -57,7 +57,7 @@
                 <TextBlock Text="End Date:"/>
             </Label>
             <TextBox Grid.Column="1" Grid.Row="0" 
-                     Text="{Binding Text}" 
+                     Text="{Binding EndPeriod}" 
                      Height="50" FontSize="36" 
                      FontStyle="Normal" 
                      Background="Black" 

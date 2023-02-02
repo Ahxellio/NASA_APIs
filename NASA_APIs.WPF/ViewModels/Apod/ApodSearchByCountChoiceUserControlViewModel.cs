@@ -14,11 +14,11 @@ namespace NASA_APIs.WPF.ViewModels.Apod
 {
     public class ApodSearchByCountChoiceUserControlViewModel : BaseVM
     {
-        private string _Text;
-        public string Text
+        private int _Count;
+        public int Count
         {
-            get { return _Text; }
-            set { Set(ref _Text, value); }
+            get { return _Count; }
+            set { Set(ref _Count, value); }
         }
         public ICommand NavigateMenuCommand { get; }
         public ICommand NavigateApodMenuCommand { get; }
@@ -33,7 +33,7 @@ namespace NASA_APIs.WPF.ViewModels.Apod
                (navigationStore, () => new ApodMenuUserControlViewModel(navigationStore)));
             NavigateApodViewCommand = new NavigateCommand<ApodSearchViewUserControlViewModel>
                (new NavigationService<ApodSearchViewUserControlViewModel>
-               (navigationStore, () => new ApodSearchViewUserControlViewModel(navigationStore)));
+               (navigationStore, () => new ApodSearchViewUserControlViewModel(navigationStore, Count)));
 
         }
     }

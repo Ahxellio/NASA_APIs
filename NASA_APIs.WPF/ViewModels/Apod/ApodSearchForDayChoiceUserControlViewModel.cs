@@ -13,6 +13,12 @@ namespace NASA_APIs.WPF.ViewModels.Apod
 {
     public class ApodSearchForDayChoiceUserControlViewModel : BaseVM
     {
+        private DateTime _Date;
+        public DateTime Date
+        {
+            get { return _Date; }
+            set { Set(ref _Date, value); }
+        }
         public ICommand NavigateMenuCommand { get; }
         public ICommand NavigateApodViewCommand { get; }
         public ApodSearchForDayChoiceUserControlViewModel(NavigationStore navigationStore)
@@ -22,7 +28,7 @@ namespace NASA_APIs.WPF.ViewModels.Apod
                (navigationStore, () => new MenuViewModel(navigationStore)));
             NavigateApodViewCommand = new NavigateCommand<ApodSearchViewUserControlViewModel>
                (new NavigationService<ApodSearchViewUserControlViewModel>
-               (navigationStore, () => new ApodSearchViewUserControlViewModel(navigationStore)));
+               (navigationStore, () => new ApodSearchViewUserControlViewModel(navigationStore, default, _Date)));
         }
     }
 }
