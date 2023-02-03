@@ -30,7 +30,7 @@ namespace NASA_APIs.WPF.ViewModels.Techport
                (navigationStore, () => new TechPortSearchByIdUserControlViewModel(navigationStore)));
             NavigateTechPortAllProjectsCommand = new NavigateCommand<TechPortViewUserControlViewModel>
                (new NavigationService<TechPortViewUserControlViewModel>
-               (navigationStore, () => new TechPortViewUserControlViewModel(navigationStore)));
+               (navigationStore, () => new TechPortViewUserControlViewModel(navigationStore, null, -1)));
 
         }
     }

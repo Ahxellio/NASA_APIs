@@ -13,12 +13,20 @@ namespace NASA_APIs.WPF.ViewModels.NeoWs
 {
     public class NeoWsViewUserControlViewModel : BaseVM
     {
+        private int _Id;
+        public int Id
+        {
+            get { return _Id; }
+            set { Set(ref _Id, value); }
+        }
         public ICommand NavigateMenuCommand { get; }
-        public NeoWsViewUserControlViewModel(NavigationStore navigationStore)
+        public NeoWsViewUserControlViewModel(NavigationStore navigationStore, int id)
         {
             NavigateMenuCommand = new NavigateCommand<MenuViewModel>
                (new NavigationService<MenuViewModel>
                (navigationStore, () => new MenuViewModel(navigationStore)));
+            if (id > 0)
+                _Id = id;
         }
     }
 }

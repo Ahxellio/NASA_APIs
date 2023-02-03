@@ -30,7 +30,7 @@
                 <TextBlock Text="Enter the desired soft" Foreground="AliceBlue"/>
             </Label>
 
-            <TextBox Grid.Row="0" Text="{Binding Text}" Height="50" FontSize="36" FontStyle="Normal" Background="Black" 
+            <TextBox Grid.Row="0" Text="{Binding Soft}" Height="50" FontSize="36" FontStyle="Normal" Background="Black" 
                      Foreground="AliceBlue" TextAlignment="Center" />
             <Label Grid.Row="1" FontSize="22" HorizontalAlignment="Center"
                VerticalAlignment="Center" Margin="5,5,5,5">

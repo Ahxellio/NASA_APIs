@@ -13,6 +13,12 @@ namespace NASA_APIs.WPF.ViewModels.Techport
 {
     public class TechPortSearchByIdUserControlViewModel : BaseVM
     {
+        private int _Id;
+        public int Id
+        {
+            get { return _Id; }
+            set { Set(ref _Id, value); }
+        }
         public ICommand NavigateMenuCommand { get; }
         public ICommand NavigateTechPortViewCommand { get; }
         public TechPortSearchByIdUserControlViewModel(NavigationStore navigationStore)
@@ -22,7 +28,7 @@ namespace NASA_APIs.WPF.ViewModels.Techport
                (navigationStore, () => new MenuViewModel(navigationStore)));
             NavigateTechPortViewCommand = new NavigateCommand<TechPortViewUserControlViewModel>
                 (new NavigationService<TechPortViewUserControlViewModel>
-                (navigationStore, () => new TechPortViewUserControlViewModel(navigationStore)));
+                (navigationStore, () => new TechPortViewUserControlViewModel(navigationStore, null, _Id)));
         }
     }
 }

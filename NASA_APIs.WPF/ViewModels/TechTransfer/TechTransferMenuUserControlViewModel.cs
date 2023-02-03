@@ -14,6 +14,12 @@ namespace NASA_APIs.WPF.ViewModels.TechTransfer
 {
     public class TechTransferMenuUserControlViewModel : BaseVM
     {
+        private string _Soft;
+        public string Soft
+        {
+            get { return _Soft; }
+            set { Set(ref _Soft, value); }
+        }
         public ICommand NavigateMenuCommand { get; }
         public ICommand NavigateTechTransferViewCommand { get; }
         public TechTransferMenuUserControlViewModel(NavigationStore navigationStore)

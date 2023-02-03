@@ -31,7 +31,7 @@
                 <TextBlock Text="Enter the desired date" Foreground="AliceBlue"/>
             </Label>
 
-            <TextBox Grid.Row="0" Text="{Binding Text}" 
+            <TextBox Grid.Row="0" Text="{Binding Date}" 
                      Height="50" FontSize="36" FontStyle="Normal" Background="Black" 
                      Foreground="AliceBlue" TextAlignment="Center" 
                      />
