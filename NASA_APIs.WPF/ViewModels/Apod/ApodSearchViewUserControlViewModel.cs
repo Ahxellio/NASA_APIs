@@ -19,27 +19,27 @@ namespace NASA_APIs.WPF.ViewModels.Apod
             get { return _Count; }
             set { Set(ref _Count, value); }
         }
-        private DateTime _Date;
-        public DateTime Date
+        private string _Date;
+        public string Date
         {
             get { return _Date; }
             set { Set(ref _Date, value); }
         }
-        private DateTime _StartPeriod;
-        public DateTime StartPeriod
+        private string _StartPeriod;
+        public string StartPeriod
         {
             get { return _StartPeriod; }
             set { Set(ref _StartPeriod, value); }
         }
-        private DateTime _EndPeriod;
-        public DateTime EndPeriod
+        private string _EndPeriod;
+        public string EndPeriod
         {
             get { return _EndPeriod; }
             set { Set(ref _EndPeriod, value); }
         }
         public ICommand NavigateMenuCommand { get; }
         public ICommand NavigateApodChoiceViewCommand { get; }
-        public ApodSearchViewUserControlViewModel(NavigationStore navigationStore, int count = default, DateTime date = default, DateTime startPeriod = default, DateTime endPeriod = default)
+        public ApodSearchViewUserControlViewModel(NavigationStore navigationStore, int count, string date, string startPeriod, string endPeriod)
         {
             NavigateMenuCommand = new NavigateCommand<MenuViewModel>
                (new NavigationService<MenuViewModel>
@@ -47,10 +47,19 @@ namespace NASA_APIs.WPF.ViewModels.Apod
             NavigateApodChoiceViewCommand = new NavigateCommand<ApodSearchByCountChoiceUserControlViewModel>
                (new NavigationService<ApodSearchByCountChoiceUserControlViewModel>
                (navigationStore, () => new ApodSearchByCountChoiceUserControlViewModel(navigationStore)));
-            _Count = count;
-            _Date = date;
-            _StartPeriod = startPeriod;
-            _EndPeriod = endPeriod;
+            if(count > 0 && date == null && startPeriod == null && endPeriod == null)
+            {
+                _Count = count;
+            }
+            else if (count <= 0 && date != null && startPeriod == null && endPeriod == null)
+            {
+                _Date = date;
+            }
+            else if (count <= 0 && date == null && startPeriod != null && endPeriod != null)
+            {
+                _StartPeriod = startPeriod;
+                _EndPeriod = endPeriod;
+            }
         }
     }
 }

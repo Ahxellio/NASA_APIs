@@ -13,6 +13,12 @@ namespace NASA_APIs.WPF.ViewModels.Mars
 {
     public class MarsMenuUserControlViewModel : BaseVM
     {
+        private int _Sol;
+        public int Sol
+        {
+            get { return _Sol; }
+            set { Set(ref _Sol, value); }
+        }
         public ICommand NavigateMarsSolChoiceCommand { get; }
         public ICommand NavigateMenuCommand { get; }
         public ICommand NavigateMarsSolCameraCommand { get; }

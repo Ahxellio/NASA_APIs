@@ -33,7 +33,7 @@ namespace NASA_APIs.WPF.ViewModels.Apod
                (navigationStore, () => new ApodMenuUserControlViewModel(navigationStore)));
             NavigateApodViewCommand = new NavigateCommand<ApodSearchViewUserControlViewModel>
                (new NavigationService<ApodSearchViewUserControlViewModel>
-               (navigationStore, () => new ApodSearchViewUserControlViewModel(navigationStore, Count)));
+               (navigationStore, () => new ApodSearchViewUserControlViewModel(navigationStore, Count, null, null, null)));
 
         }
     }

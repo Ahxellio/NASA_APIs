@@ -13,6 +13,18 @@ namespace NASA_APIs.WPF.ViewModels.Mars
 {
     public class MarsSearchForSolPageUserControlViewModel : BaseVM
     {
+        private int _Sol;
+        public int Sol
+        {
+            get { return _Sol; }
+            set { Set(ref _Sol, value); }
+        }
+        private int _Page;
+        public int Page
+        {
+            get { return _Page; }
+            set { Set(ref _Page, value); }
+        }
         public ICommand NavigateMenuCommand { get; }
         public ICommand NavigateMarsViewCommand { get; }
         public MarsSearchForSolPageUserControlViewModel(NavigationStore navigationStore)
@@ -22,7 +34,7 @@ namespace NASA_APIs.WPF.ViewModels.Mars
                 (navigationStore, () => new MenuViewModel(navigationStore)));
             NavigateMarsViewCommand = new NavigateCommand<MarsSearchViewUserControlViewModel>
                (new NavigationService<MarsSearchViewUserControlViewModel>
-               (navigationStore, () => new MarsSearchViewUserControlViewModel(navigationStore)));
+               (navigationStore, () => new MarsSearchViewUserControlViewModel(navigationStore, _Sol, _Page, null)));
         }
     }
 }

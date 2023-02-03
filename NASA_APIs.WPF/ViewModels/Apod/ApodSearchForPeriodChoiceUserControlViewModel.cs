@@ -14,14 +14,14 @@ namespace NASA_APIs.WPF.ViewModels.Apod
 {
     public class ApodSearchForPeriodChoiceUserControlViewModel : BaseVM
     {
-        private DateTime _StartPeriod;
-        public DateTime StartPeriod
+        private string _StartPeriod = DateTime.MinValue.ToShortDateString();
+        public string StartPeriod
         {
             get { return _StartPeriod; }
             set { Set(ref _StartPeriod, value); }
         }
-        private DateTime _EndPeriod;
-        public DateTime EndPeriod
+        private string _EndPeriod = DateTime.MaxValue.ToShortDateString();
+        public string EndPeriod
         {
             get { return _EndPeriod; }
             set { Set(ref _EndPeriod, value); }
@@ -36,7 +36,7 @@ namespace NASA_APIs.WPF.ViewModels.Apod
                (navigationStore, () => new MenuViewModel(navigationStore))); 
             NavigateApodViewCommand = new NavigateCommand<ApodSearchViewUserControlViewModel>
                (new NavigationService<ApodSearchViewUserControlViewModel>
-               (navigationStore, () => new ApodSearchViewUserControlViewModel(navigationStore, default, default, _StartPeriod, EndPeriod)));
+               (navigationStore, () => new ApodSearchViewUserControlViewModel(navigationStore, -1, null, _StartPeriod, EndPeriod)));
         }
     }
 }

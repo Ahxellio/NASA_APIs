@@ -45,7 +45,7 @@
             </Label>
 
             <TextBox Grid.Column="0" Grid.Row="0" 
-                     Text="{Binding Text}" 
+                     Text="{Binding Sol}" 
                      Height="50" FontSize="36" 
                      FontStyle="Normal" 
                      Background="Black" 
@@ -57,7 +57,7 @@
                 <TextBlock Text="Enter Page:"/>
             </Label>
             <TextBox Grid.Column="1" Grid.Row="0" 
-                     Text="{Binding Text}" 
+                     Text="{Binding Page}" 
                      Height="50" FontSize="36" 
                      FontStyle="Normal" 
                      Background="Black" 
