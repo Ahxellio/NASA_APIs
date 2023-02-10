@@ -22,10 +22,9 @@ namespace NASA_APIs.DAL.Context
                 .HasMany<DataValue>()
                 .WithOne(v => v.Source)
                 .OnDelete(DeleteBehavior.Cascade);
-            model.Entity<DataSource>()
-               .HasMany<DataAPODValues>()
-               .WithOne(v => v.Source)
-               .OnDelete(DeleteBehavior.Cascade);
+            model.Entity<DataAPODValues>()
+                .HasIndex(v => v.Id);
+               
 
         }
 

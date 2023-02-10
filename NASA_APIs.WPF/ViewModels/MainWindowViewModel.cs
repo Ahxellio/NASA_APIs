@@ -15,7 +15,6 @@ namespace NASA_APIs.WPF.ViewModels
 {
     public class MainWindowViewModel : BaseVM
     {
-        private readonly IRepository<DataSource> _DataSources;
         private readonly NavigationStore _navigationStore;
 
         public MainWindowViewModel(NavigationStore navigationStore)
@@ -29,19 +28,7 @@ namespace NASA_APIs.WPF.ViewModels
         }
 
         public BaseVM CurrentViewModel => _navigationStore.CurrentViewModel;
-        public ObservableCollection<DataSource> DataSources { get; } = new();
 
-
-        private LambdaCommand _LoadDataSourceCommand;
-
-        public ICommand LoadDataSourceCommand => _LoadDataSourceCommand ??= new(OnLoadDataSourceCommandExecuted);
-
-        private async void OnLoadDataSourceCommandExecuted(object p)
-        {
-            DataSources.Clear();
-            foreach (var source in await _DataSources.GetAll())
-                DataSources.Add(source);
-        }
 
 
     }

@@ -11,7 +11,6 @@ namespace NASA_APIs.Interfaces.Base.Entities
     public interface IAPODEntity
     {
         [JsonPropertyName("date")]
-        [JsonConverter(typeof(JsonDateConverter))]
         public DateTime Date { get; set; }
 
         [JsonPropertyName("explanation")]

@@ -9,7 +9,7 @@ namespace NASA_APIs.Models
     public class APODModel
     {
         [JsonPropertyName("date")]
-        [JsonConverter(typeof(JsonDateConverter))]
+        //[JsonConverter(typeof(JsonDateConverter))]
         public DateTime Date { get; set; }
 
         [JsonPropertyName("explanation")]

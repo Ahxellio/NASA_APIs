@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace NASA_APIs.DAL.Entities
 {
-    [Index(nameof(Name))]
+    [Index(nameof(Title))]
     public class DataAPODValues : NamedEntity, IAPODEntity
     {
         [Required]
@@ -22,6 +22,6 @@ namespace NASA_APIs.DAL.Entities
         [Required]
         public string Title { get; set; }
         public string Type { get; set; }
-        public DataSource Source { get; set; }
+        public string Source { get; set; }
     }
 }
