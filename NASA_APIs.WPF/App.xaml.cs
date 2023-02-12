@@ -33,6 +33,10 @@ namespace NASA_APIs.WPF
             {
                 client.BaseAddress = new Uri($"{host.Configuration["WebAPI"]}/api/DataSources/");
             });
+            //services.AddHttpClient<IRepository<DataAPODValues>, WebRepository<DataAPODValues>>(client =>
+            //{
+            //    client.BaseAddress = new Uri($"{host.Configuration["WebAPI"]}/api/DataSources/");
+            //});
         }
         protected override async void OnStartup(StartupEventArgs e)
         {

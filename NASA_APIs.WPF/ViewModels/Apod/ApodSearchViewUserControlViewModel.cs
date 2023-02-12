@@ -19,58 +19,8 @@ namespace NASA_APIs.WPF.ViewModels.Apod
 {
     public class ApodSearchViewUserControlViewModel : BaseVM
     {
-        //private static IHost _Hosting;
+        public ObservableCollection<APODModel> DataSources { get; } = new();
 
-        //public static IHost Hosting => _Hosting ??= CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
-
-        //public static IServiceProvider Services => Hosting.Services;
-
-        //public static IHostBuilder CreateHostBuilder(string[] args) => Host
-        //   .CreateDefaultBuilder(args)
-        //   .ConfigureServices(ConfigureServices);
-
-        //private static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
-        //{
-        //    services.AddHttpClient<NASA_APIsClient>(client => client.BaseAddress = new Uri(host.Configuration["NASA"]));
-        //}
-
-        //private readonly IRepository<DataAPODValues> _DataSources;
-        //public ObservableCollection<DataAPODValues> DataSources { get; } = new();
-
-
-        //private LambdaCommand _AddDataSourceCommand;
-
-        //public ICommand AddDataSourceCommand => _AddDataSourceCommand ??= new(OnAddDataSourceCommandExecuted);
-
-        //private async void OnAddDataSourceCommandExecuted(object p)
-        //{
-        //    using var host = Hosting;
-        //    await host.StartAsync();
-        //    var apod = Services.GetRequiredService<NASA_APIsClient>();
-        //    var pictures = await apod.GetAPOD(_Count);
-        //    DataAPODValues model= new DataAPODValues();
-        //    for(int i = 0; i < _Count; i++)
-        //    {
-        //        model.Text = pictures[i].Text;
-        //        model.Title = pictures[i].Title;
-        //        model.Name = pictures[i].Title;
-        //        model.ImageUrl = pictures[i].ImageUrl;
-        //        model.Date = pictures[i].Date;
-        //        model.Source = "APOD";  
-        //        model.Type = pictures[i].Type;
-        //        await _DataSources.Add(model);
-        //    }
-        //}
-        //private LambdaCommand _LoadDataSourceCommand;
-
-        //public ICommand LoadDataSourceCommand => _LoadDataSourceCommand ??= new(OnLoadDataSourceCommandExecuted);
-
-        //private async void OnLoadDataSourceCommandExecuted(object p)
-        //{
-        //    DataSources.Clear();
-        //    foreach (var source in await _DataSources.GetAll())
-        //        DataSources.Add(source);
-        //}
         private int _Count;
         public int Count
         {
@@ -97,7 +47,8 @@ namespace NASA_APIs.WPF.ViewModels.Apod
         }
         public ICommand NavigateMenuCommand { get; }
         public ICommand NavigateApodChoiceViewCommand { get; }
-        public ApodSearchViewUserControlViewModel(NavigationStore navigationStore, int count, string date, string startPeriod, string endPeriod)
+        public ApodSearchViewUserControlViewModel(NavigationStore navigationStore, int count, 
+            string date, string startPeriod, string endPeriod, ObservableCollection<APODModel> data)
         {
             NavigateMenuCommand = new NavigateCommand<MenuViewModel>
                (new NavigationService<MenuViewModel>
@@ -118,6 +69,7 @@ namespace NASA_APIs.WPF.ViewModels.Apod
                 _StartPeriod = startPeriod;
                 _EndPeriod = endPeriod;
             }
+            DataSources = data;
         }
     }
 }

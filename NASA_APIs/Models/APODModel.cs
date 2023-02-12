@@ -10,7 +10,7 @@ namespace NASA_APIs.Models
     {
         [JsonPropertyName("date")]
         //[JsonConverter(typeof(JsonDateConverter))]
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
 
         [JsonPropertyName("explanation")]
         public string Text { get; set; }

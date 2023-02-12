@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace NASA_APIs.DAL.Entities
 {
     [Index(nameof(Title))]
-    public class DataAPODValues : NamedEntity, IAPODEntity
+    public class DataAPODValues : Entity, IAPODEntity
     {
         [Required]
         public DateTime Date { get; set; }

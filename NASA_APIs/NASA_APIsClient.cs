@@ -25,18 +25,27 @@ namespace NASA_APIs
             return await _Client.GetFromJsonAsync<APODModel[]>($"planetary/apod?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa&count={count}",
                 Cancel).ConfigureAwait(false);
         }
-        public async Task<APODModel[]> GetAPOD(DateTime start_date, 
+        public async Task<APODModel[]> GetAPOD(string date, 
              IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
-            DateTime end_date = start_date;
+            var year = date.Split('.')[2];
+            var month = date.Split('.')[1];
+            var day = date.Split('.')[0];
             return await _Client.GetFromJsonAsync<APODModel[]>($"planetary/apod?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa&start_date=" +
-                $"{start_date.Year}-{start_date.Month}-{start_date.Day}&end_date={end_date.Year}-{end_date.Month}-{end_date.Day}",
+                $"{year}-{month}-{day}&end_date={year}-{month}-{day}",
                 Cancel).ConfigureAwait(false);
         }
-        public async Task<APODModel[]> GetAPOD(DateTime start_date, DateTime end_date, IProgress<double> Progress = default, CancellationToken Cancel = default)
+        public async Task<APODModel[]> GetAPOD(string start_date, string end_date, IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
+            var start_year = start_date.Split('.')[2];
+            var start_month = start_date.Split('.')[1];
+            var start_day = start_date.Split('.')[0];
+
+            var end_year = end_date.Split('.')[2];
+            var end_month = end_date.Split('.')[1];
+            var end_day = end_date.Split('.')[0];
             return await _Client.GetFromJsonAsync<APODModel[]>($"planetary/apod?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa&start_date=" +
-                $"{start_date.Year}-{start_date.Month}-{start_date.Day}&end_date={end_date.Year}-{end_date.Month}-{end_date.Day}",
+                $"{start_year}-{start_month}-{start_day}&end_date={end_year}-{end_month}-{end_day}",
                 Cancel).ConfigureAwait(false);
         }
         public async Task<NeoWsModel> GetNeoWs(int id,IProgress<double> Progress = default, CancellationToken Cancel = default)
