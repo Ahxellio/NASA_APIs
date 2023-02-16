@@ -35,7 +35,6 @@ namespace NASA_APIs.WPF.ViewModels.Apod
             services.AddHttpClient<NASA_APIsClient>(client => client.BaseAddress = new Uri(host.Configuration["NASA"]));
         }
 
-        private readonly IRepository<DataAPODValues> _DataSources;
         public ObservableCollection<APODModel> DataSources { get; } = new();
 
 

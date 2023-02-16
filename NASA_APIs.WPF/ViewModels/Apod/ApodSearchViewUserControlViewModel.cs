@@ -19,8 +19,21 @@ namespace NASA_APIs.WPF.ViewModels.Apod
 {
     public class ApodSearchViewUserControlViewModel : BaseVM
     {
+        private APODModel _SelectedItem;
+        public APODModel SelectedItem 
+        { 
+            get => _SelectedItem; 
+            set { Set(ref _SelectedItem, value); }
+        }
+
         public ObservableCollection<APODModel> DataSources { get; } = new();
 
+        private bool _isSearching;
+        public bool IsSearching
+        {
+            get { return _isSearching; }
+            set { Set(ref _isSearching, value); }
+        }
         private int _Count;
         public int Count
         {

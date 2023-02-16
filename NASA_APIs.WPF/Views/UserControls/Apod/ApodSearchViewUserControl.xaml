@@ -5,9 +5,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:inf="clr-namespace:NASA_APIs.WPF.Infrastructure"
              xmlns:local="clr-namespace:NASA_APIs.WPF.Views.UserControls.Apod"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="DimGray">
+    <UserControl.Resources>
+        <inf:InvertBoolConverter x:Key="InvertBoolConverter"/>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -25,15 +30,30 @@
             </Button.ToolTip>
         </Button>
         <ListBox Grid.Column="0" Grid.Row="1" Background="Transparent" Foreground="AliceBlue" 
-                 ItemsSource="{Binding DataSources}">
+                 ItemsSource="{Binding DataSources}" SelectedItem="{Binding SelectedItem}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
                         <TextBlock Text="{Binding Title}" TextWrapping="Wrap"/>
-                        <TextBlock Text="{Binding Date}"/>
+                        <TextBlock Text="{Binding Date}" TextWrapping="Wrap"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+            <StackPanel   Grid.Column="0" Grid.Row="0">
+                <Image Source="{Binding SelectedItem.ImageUrl}" Margin="20,20,20,20"/>
+            </StackPanel>
+            <StackPanel Grid.Column="0" Grid.Row="1">
+                <TextBlock Text="{Binding SelectedItem.Title}" HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="AliceBlue" Background="Transparent"/>
+                <TextBlock Text="{Binding SelectedItem.Date}" HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="AliceBlue" Background="Transparent"/>
+                <TextBlock Text="{Binding SelectedItem.Text}" TextWrapping="Wrap" Foreground="AliceBlue" Background="Transparent"/>
+            </StackPanel>
+           
+        </Grid>
     </Grid>
 </UserControl>
