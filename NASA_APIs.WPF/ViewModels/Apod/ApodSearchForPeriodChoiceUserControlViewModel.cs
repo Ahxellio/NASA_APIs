@@ -32,11 +32,10 @@ namespace NASA_APIs.WPF.ViewModels.Apod
 
         private static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
-            services.AddHttpClient<NASA_APIsClient>(client => client.BaseAddress = new Uri(host.Configuration["NASA"]));
+            services.AddHttpClient<ClientRequests>(client => client.BaseAddress = new Uri(host.Configuration["NASA"]));
         }
 
-        private readonly IRepository<DataAPODValues> _DataSources;
-        public ObservableCollection<APODModel> DataSources { get; } = new();
+        public ObservableCollection<ApodValue> ApodValues { get; } = new();
 
 
         private LambdaCommand _AddDataSourceCommand;
@@ -44,15 +43,13 @@ namespace NASA_APIs.WPF.ViewModels.Apod
         public ICommand AddDataSourceCommand => _AddDataSourceCommand ??= new(OnAddDataSourceCommandExecuted);
         private async void OnAddDataSourceCommandExecuted(object p)
         {
-            DataSources.Clear();
             using var host = Hosting;
             await host.StartAsync();
-            var apod = Services.GetRequiredService<NASA_APIsClient>();
+            var apod = Services.GetRequiredService<ClientRequests>();
             var pictures = await apod.GetAPOD(_StartPeriod, _EndPeriod);
-            APODModel model = new APODModel();
             foreach (var picture in pictures)
             {
-                DataSources.Add(picture);
+                ApodValues.Add(picture);
             }
 
         }
@@ -79,7 +76,7 @@ namespace NASA_APIs.WPF.ViewModels.Apod
             NavigateApodViewCommand = new NavigateCommand<ApodSearchViewUserControlViewModel>
                (new NavigationService<ApodSearchViewUserControlViewModel>
                (navigationStore, () => new ApodSearchViewUserControlViewModel(navigationStore, -1, null, 
-               _StartPeriod, EndPeriod, DataSources)));
+               _StartPeriod, EndPeriod, ApodValues)));
         }
     }
 }

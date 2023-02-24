@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NASA_APIs.DAL.Context;
 
 namespace NASA_APIs.DAL.SqlServer.Migrations
 {
     [DbContext(typeof(DataDB))]
-    partial class DataDBModelSnapshot : ModelSnapshot
+    [Migration("20230219135841_TestNew")]
+    partial class TestNew
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -18,7 +20,7 @@ namespace NASA_APIs.DAL.SqlServer.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("NASA_APIs.DAL.Entities.ApodValue", b =>
+            modelBuilder.Entity("NASA_APIs.DAL.Entities.DataAPODValues", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -44,7 +46,7 @@ namespace NASA_APIs.DAL.SqlServer.Migrations
 
                     b.HasIndex("Id");
 
-                    b.ToTable("ApodValue");
+                    b.ToTable("APODValues");
                 });
 #pragma warning restore 612, 618
         }

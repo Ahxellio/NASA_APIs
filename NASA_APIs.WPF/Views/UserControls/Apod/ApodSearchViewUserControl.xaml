@@ -9,6 +9,11 @@
              xmlns:local="clr-namespace:NASA_APIs.WPF.Views.UserControls.Apod"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="DimGray">
+    <!--<i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadApodValuesCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>-->
     <UserControl.Resources>
         <inf:InvertBoolConverter x:Key="InvertBoolConverter"/>
     </UserControl.Resources>
@@ -30,7 +35,7 @@
             </Button.ToolTip>
         </Button>
         <ListBox Grid.Column="0" Grid.Row="1" Background="Transparent" Foreground="AliceBlue" 
-                 ItemsSource="{Binding DataSources}" SelectedItem="{Binding SelectedItem}">
+                 ItemsSource="{Binding ApodValues}" SelectedItem="{Binding SelectedItem}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -46,7 +51,7 @@
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
             <StackPanel   Grid.Column="0" Grid.Row="0">
-                <Image Source="{Binding SelectedItem.ImageUrl}" Margin="20,20,20,20"/>
+                <Image Source="{Binding SelectedItem.ImageUrl}" Margin="20,20,20,20" MaxHeight="800"/>
             </StackPanel>
             <StackPanel Grid.Column="0" Grid.Row="1">
                 <TextBlock Text="{Binding SelectedItem.Title}" HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="AliceBlue" Background="Transparent"/>

@@ -22,9 +22,9 @@ namespace NASA_APIs.ConsoleUI
 
         private static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
-            services.AddHttpClient<IRepository<DataSource>, WebRepository<DataSource>>(client =>
+            services.AddHttpClient<IRepository<ApodValue>, WebRepository<ApodValue>>(client =>
             {
-                client.BaseAddress = new Uri($"{host.Configuration["WebAPI"]}/api/DataSources/");
+                client.BaseAddress = new Uri($"{host.Configuration["WebAPI"]}/api/ApodValue/");
             });
         }
         static async Task Main(string[] args)
@@ -32,7 +32,7 @@ namespace NASA_APIs.ConsoleUI
             using var host = Hosting;
             await host.StartAsync();
 
-            var data_sources = Services.GetRequiredService<IRepository<DataSource>>();
+            var data_sources = Services.GetRequiredService<IRepository<ApodValue>>();
             var count = await data_sources.GetCount();
             Console.WriteLine($"Было элементов: {count}");
 

@@ -1,9 +1,12 @@
-﻿using NASA_APIs.WPF.Infrastructure;
+﻿using NASA_APIs.DAL.Entities;
+using NASA_APIs.Interfaces.Base.Repositories;
+using NASA_APIs.WPF.Infrastructure;
 using NASA_APIs.WPF.Services;
 using NASA_APIs.WPF.Stores;
 using NASA_APIs.WPF.ViewModels.Base;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;

@@ -16,9 +16,8 @@ namespace NASA_APIs.API.Data
         }
         public void Initialize()
         {
+            _db.Database.EnsureCreated();
             _db.Database.Migrate();
-            if (_db.Sources.Any()) return;
-
             _db.SaveChanges();
         }
     }

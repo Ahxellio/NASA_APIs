@@ -10,22 +10,11 @@ namespace NASA_APIs.DAL.Context
 {
     public class DataDB : DbContext
     {
-        public DbSet<DataValue> Values { get; set; } 
-        public DbSet<DataSource> Sources { get; set; }
-        public DbSet<DataAPODValues> APODValues { get; set; }
-        public DataDB(DbContextOptions<DataDB> options) : base(options) { }
-
+        public DbSet<ApodValue> ApodValue { get; set; }
+        public DataDB(DbContextOptions<DataDB> options) : base(options) { Database.EnsureCreated(); }
         protected override void OnModelCreating(ModelBuilder model)
         {
             base.OnModelCreating(model);
-            model.Entity<DataSource>()
-                .HasMany<DataValue>()
-                .WithOne(v => v.Source)
-                .OnDelete(DeleteBehavior.Cascade);
-            model.Entity<DataAPODValues>()
-                .HasIndex(v => v.Id);
-               
-
         }
 
     }

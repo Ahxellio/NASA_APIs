@@ -1,33 +1,34 @@
-﻿using NASA_APIs.Models;
+﻿using NASA_APIs.DAL.Entities;
+using NASA_APIs.Models;
 using System;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace NASA_APIs
+namespace NASA_APIs.WPF.Infrastructure
 {
-    public class NASA_APIsClient
+    public class ClientRequests
     {
         private readonly HttpClient _Client;
-        public NASA_APIsClient(HttpClient Client)=> _Client = Client;
+        public ClientRequests(HttpClient Client) => _Client = Client;
 
-        public async Task<APODModel[]> GetAPOD(int count, IProgress<double> Progress = default, CancellationToken Cancel = default)
+        public async Task<ApodValue[]> GetAPOD(int count, IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
-            return await _Client.GetFromJsonAsync<APODModel[]>($"planetary/apod?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa&count={count}",
+            return await _Client.GetFromJsonAsync<ApodValue[]>($"planetary/apod?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa&count={count}",
                 Cancel).ConfigureAwait(false);
         }
-        public async Task<APODModel[]> GetAPOD(string date, 
+        public async Task<ApodValue[]> GetAPOD(string date,
              IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
             var year = date.Split('.')[2];
             var month = date.Split('.')[1];
             var day = date.Split('.')[0];
-            return await _Client.GetFromJsonAsync<APODModel[]>($"planetary/apod?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa&start_date=" +
+            return await _Client.GetFromJsonAsync<ApodValue[]>($"planetary/apod?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa&start_date=" +
                 $"{year}-{month}-{day}&end_date={year}-{month}-{day}",
                 Cancel).ConfigureAwait(false);
         }
-        public async Task<APODModel[]> GetAPOD(string start_date, string end_date, IProgress<double> Progress = default, CancellationToken Cancel = default)
+        public async Task<ApodValue[]> GetAPOD(string start_date, string end_date, IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
             var start_year = start_date.Split('.')[2];
             var start_month = start_date.Split('.')[1];
@@ -36,11 +37,11 @@ namespace NASA_APIs
             var end_year = end_date.Split('.')[2];
             var end_month = end_date.Split('.')[1];
             var end_day = end_date.Split('.')[0];
-            return await _Client.GetFromJsonAsync<APODModel[]>($"planetary/apod?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa&start_date=" +
+            return await _Client.GetFromJsonAsync<ApodValue[]>($"planetary/apod?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa&start_date=" +
                 $"{start_year}-{start_month}-{start_day}&end_date={end_year}-{end_month}-{end_day}",
                 Cancel).ConfigureAwait(false);
         }
-        public async Task<NeoWsModel> GetNeoWs(int id,IProgress<double> Progress = default, CancellationToken Cancel = default)
+        public async Task<NeoWsModel> GetNeoWs(int id, IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
             return await _Client.GetFromJsonAsync<NeoWsModel>($"neo/rest/v1/neo/{id}?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa",
                 Cancel).ConfigureAwait(false);
@@ -52,13 +53,13 @@ namespace NASA_APIs
         }
         public async Task<MarsRoversModel> GetMarsPhotos(int sol, IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
-              return await _Client.GetFromJsonAsync<MarsRoversModel>($"mars-photos/api/v1/rovers/curiosity/photos?" +
-                    $"sol={sol}&api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa", Cancel).ConfigureAwait(false);
+            return await _Client.GetFromJsonAsync<MarsRoversModel>($"mars-photos/api/v1/rovers/curiosity/photos?" +
+                  $"sol={sol}&api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa", Cancel).ConfigureAwait(false);
         }
         public async Task<MarsRoversModel> GetMarsPhotos(int sol, string camera, IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
-                return await _Client.GetFromJsonAsync<MarsRoversModel>($"mars-photos/api/v1/rovers/curiosity/photos?" +
-                    $"sol={sol}&camera={camera}&api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa", Cancel).ConfigureAwait(false);
+            return await _Client.GetFromJsonAsync<MarsRoversModel>($"mars-photos/api/v1/rovers/curiosity/photos?" +
+                $"sol={sol}&camera={camera}&api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa", Cancel).ConfigureAwait(false);
         }
         public async Task<MarsRoversModel> GetMarsPhotos(int sol, int page, IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
@@ -80,7 +81,7 @@ namespace NASA_APIs
             return await _Client.GetFromJsonAsync<TechPortProjectsModel>($"techport/api/projects?" +
                 $"api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa", Cancel).ConfigureAwait(false);
         }
-        public async Task<TechPortProjectsModel> GetTechPort(DateTime date,IProgress<double> Progress = default, CancellationToken Cancel = default)
+        public async Task<TechPortProjectsModel> GetTechPort(DateTime date, IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
             return await _Client.GetFromJsonAsync<TechPortProjectsModel>($"techport/api/projects?updatedSince={date.Year}-{date.Month}-{date.Day}" +
                 $"&api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa", Cancel).ConfigureAwait(false);
@@ -88,6 +89,6 @@ namespace NASA_APIs
 
 
     }
-   
-    
 }
+
+

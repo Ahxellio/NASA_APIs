@@ -8,6 +8,7 @@ using NASA_APIs.WPF.Services;
 using NASA_APIs.WPF.Stores;
 using NASA_APIs.WPF.ViewModels.Base;
 using System;
+using NASA_APIs.WPF.Models;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -19,14 +20,12 @@ namespace NASA_APIs.WPF.ViewModels.Apod
 {
     public class ApodSearchViewUserControlViewModel : BaseVM
     {
-        private APODModel _SelectedItem;
-        public APODModel SelectedItem 
+        private ApodValue _SelectedItem;
+        public ApodValue SelectedItem 
         { 
             get => _SelectedItem; 
             set { Set(ref _SelectedItem, value); }
         }
-
-        public ObservableCollection<APODModel> DataSources { get; } = new();
 
         private bool _isSearching;
         public bool IsSearching
@@ -60,8 +59,9 @@ namespace NASA_APIs.WPF.ViewModels.Apod
         }
         public ICommand NavigateMenuCommand { get; }
         public ICommand NavigateApodChoiceViewCommand { get; }
+        public ObservableCollection<ApodValue> ApodValues { get; } = new();
         public ApodSearchViewUserControlViewModel(NavigationStore navigationStore, int count, 
-            string date, string startPeriod, string endPeriod, ObservableCollection<APODModel> data)
+            string date, string startPeriod, string endPeriod, ObservableCollection<ApodValue> apodValues)
         {
             NavigateMenuCommand = new NavigateCommand<MenuViewModel>
                (new NavigationService<MenuViewModel>
@@ -82,7 +82,7 @@ namespace NASA_APIs.WPF.ViewModels.Apod
                 _StartPeriod = startPeriod;
                 _EndPeriod = endPeriod;
             }
-            DataSources = data;
+            ApodValues = apodValues;
         }
     }
 }

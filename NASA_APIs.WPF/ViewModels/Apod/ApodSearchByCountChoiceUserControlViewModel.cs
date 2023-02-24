@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NASA_APIs.DAL.Entities;
+using NASA_APIs.DAL.Repositories;
 using NASA_APIs.Interfaces.Base.Repositories;
 using NASA_APIs.Models;
 using NASA_APIs.WPF.Infrastructure;
@@ -32,10 +33,10 @@ namespace NASA_APIs.WPF.ViewModels.Apod
 
         private static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
-            services.AddHttpClient<NASA_APIsClient>(client => client.BaseAddress = new Uri(host.Configuration["NASA"]));
+            services.AddHttpClient<ClientRequests>(client => client.BaseAddress = new Uri(host.Configuration["NASA"]));
         }
 
-        public ObservableCollection<APODModel> DataSources { get; } = new();
+        public ObservableCollection<ApodValue> ApodValues { get; } = new();
 
 
         private LambdaCommand _AddDataSourceCommand;
@@ -43,16 +44,14 @@ namespace NASA_APIs.WPF.ViewModels.Apod
         public ICommand AddDataSourceCommand => _AddDataSourceCommand ??= new(OnAddDataSourceCommandExecuted);
         private async void OnAddDataSourceCommandExecuted(object p)
         {
-            DataSources.Clear();
+            ApodValues.Clear();
             using var host = Hosting;
             await host.StartAsync();
-            var apod = Services.GetRequiredService<NASA_APIsClient>();
+            var apod = Services.GetRequiredService<ClientRequests>();
             var pictures = await apod.GetAPOD(_Count);
-            APODModel model = new APODModel();
             foreach(var picture in pictures)
-            {
-               
-                DataSources.Add(picture);
+            { 
+                ApodValues.Add(picture);
             }
             
         }
@@ -76,7 +75,7 @@ namespace NASA_APIs.WPF.ViewModels.Apod
             NavigateApodViewCommand = new NavigateCommand<ApodSearchViewUserControlViewModel>
                (new NavigationService<ApodSearchViewUserControlViewModel>
                (navigationStore, () => new ApodSearchViewUserControlViewModel(navigationStore, Count, 
-               null, null, null, DataSources)));
+               null, null, null, ApodValues)));
 
         }
     }
