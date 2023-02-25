@@ -12,6 +12,10 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
         <Button Grid.Column="0" Grid.Row="0" Style="{StaticResource dashboardBtn}" VerticalAlignment="Center" HorizontalAlignment="Left"
                 Command="{Binding NavigateMenuCommand}">
             <fa:IconImage Icon="Backward" Style="{StaticResource btnIcon}"/>
@@ -19,5 +23,63 @@
                 Back To Main Menu
             </Button.ToolTip>
         </Button>
+        <ListBox Grid.Column="0" Grid.Row="1" Background="Transparent" Foreground="AliceBlue" 
+                 ItemsSource="{Binding PhotosValues}" SelectedItem="{Binding Photo}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <DockPanel>
+                            <TextBlock Text="Photo ID: "/>
+                            <TextBlock Text="{Binding Id}" TextWrapping="Wrap"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Text="Rover Name: "/>
+                            <TextBlock Text="{Binding Rover.Name}" TextWrapping="Wrap"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Text="Camera Name: "/>
+                            <TextBlock Text="{Binding Camera.Name}" TextWrapping="Wrap"/>
+                        </DockPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <StackPanel   Grid.Column="0" Grid.Row="0">
+                <Image Source="{Binding Photo.ImgSrc}" Margin="20,20,20,20" MaxHeight="800"/>
+            </StackPanel>
+            <StackPanel Grid.Column="0" Grid.Row="1">
+                <DockPanel>
+                    <TextBlock Text="Photo ID: " FontSize="18" Foreground="AliceBlue"/>
+                    <TextBlock Text="{Binding Photo.Id}" TextWrapping="Wrap" FontSize="18" Foreground="AliceBlue"/>
+                    <TextBlock Text="  Camera Full Name: " FontSize="18" Foreground="AliceBlue"/>
+                    <TextBlock Text="{Binding Photo.Camera.FullName}" TextWrapping="Wrap" FontSize="18" Foreground="AliceBlue"/>
+                    <TextBlock Text="  Sol: " TextWrapping="Wrap" FontSize="18" Foreground="AliceBlue"/>
+                    <TextBlock Text="{Binding Photo.Sol}" TextWrapping="Wrap" FontSize="18" Foreground="AliceBlue"/>
+                    <TextBlock Text="  Earth Date : " TextWrapping="Wrap" FontSize="18" Foreground="AliceBlue"/>
+                    <TextBlock Text="{Binding Photo.EarthDate}" TextWrapping="Wrap" FontSize="18" Foreground="AliceBlue"/>
+                </DockPanel>
+                <DockPanel>
+                    <TextBlock Text="Rover ID: " FontSize="18" Foreground="AliceBlue"/>
+                    <TextBlock Text="{Binding Photo.Rover.Id}" TextWrapping="Wrap" FontSize="18" Foreground="AliceBlue"/>
+                    <TextBlock Text="  Rover Name: " FontSize="18" Foreground="AliceBlue"/>
+                    <TextBlock Text="{Binding Photo.Rover.Name}" TextWrapping="Wrap" FontSize="18" Foreground="AliceBlue"/>
+                    <TextBlock Text="  Landing Date: " FontSize="18" Foreground="AliceBlue"/>
+                    <TextBlock Text="{Binding Photo.Rover.LandingDate}" TextWrapping="Wrap"  FontSize="18" Foreground="AliceBlue"/>
+                    <TextBlock Text="  Launch Date: " FontSize="18" Foreground="AliceBlue"/>
+                    <TextBlock Text="{Binding Photo.Rover.LaunchDate}" TextWrapping="Wrap" FontSize="18" Foreground="AliceBlue"/>
+                    <TextBlock Text="  Status: " FontSize="18" Foreground="AliceBlue"/>
+                    <TextBlock Text="{Binding Photo.Rover.Status}" TextWrapping="Wrap" FontSize="18" Foreground="AliceBlue"/>
+                </DockPanel>
+                <TextBlock Text="{Binding Photo.Title}" HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="AliceBlue" Background="Transparent"/>
+                <TextBlock Text="{Binding Photo.Date}" HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="AliceBlue" Background="Transparent"/>
+                <TextBlock Text="{Binding Photo.Text}" TextWrapping="Wrap" Foreground="AliceBlue" Background="Transparent"/>
+            </StackPanel>
+
+        </Grid>
     </Grid>
 </UserControl>

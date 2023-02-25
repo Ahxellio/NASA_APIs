@@ -1,10 +1,12 @@
-﻿using NASA_APIs.WPF.Infrastructure;
+﻿using NASA_APIs.DAL.Entities;
+using NASA_APIs.WPF.Infrastructure;
 using NASA_APIs.WPF.Services;
 using NASA_APIs.WPF.Stores;
 using NASA_APIs.WPF.ViewModels.Base;
 using NASA_APIs.WPF.Views.UserControls.Mars;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +16,13 @@ namespace NASA_APIs.WPF.ViewModels.Mars
 {
     public class MarsSearchViewUserControlViewModel : BaseVM
     {
+        private DAL.Entities.Photo _Photo;
+        public DAL.Entities.Photo Photo
+        {
+            get { return _Photo; }
+            set { Set(ref _Photo, value); }
+        }
+        public ObservableCollection<DAL.Entities.Photo> PhotosValues { get; set; } = new();
         private int _Sol;
         public int Sol
         {
@@ -33,7 +42,7 @@ namespace NASA_APIs.WPF.ViewModels.Mars
             set { Set(ref _Camera, value); }
         }
         public ICommand NavigateMenuCommand { get; }
-        public MarsSearchViewUserControlViewModel(NavigationStore navigationStore, int sol, int page, string camera )
+        public MarsSearchViewUserControlViewModel(NavigationStore navigationStore, int sol, int page, string camera, ObservableCollection<DAL.Entities.Photo> photos)
         {
             NavigateMenuCommand = new NavigateCommand<MenuViewModel>
                (new NavigationService<MenuViewModel>
@@ -47,6 +56,7 @@ namespace NASA_APIs.WPF.ViewModels.Mars
             {
                 _Camera = camera;
             }
+            PhotosValues = photos;
         }
     }
 }

@@ -8,7 +8,6 @@ using NASA_APIs.WPF.Services;
 using NASA_APIs.WPF.Stores;
 using NASA_APIs.WPF.ViewModels.Base;
 using System;
-using NASA_APIs.WPF.Models;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
