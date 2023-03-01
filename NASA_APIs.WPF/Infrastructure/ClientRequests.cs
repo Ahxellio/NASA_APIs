@@ -41,14 +41,14 @@ namespace NASA_APIs.WPF.Infrastructure
                 $"{start_year}-{start_month}-{start_day}&end_date={end_year}-{end_month}-{end_day}",
                 Cancel).ConfigureAwait(false);
         }
-        public async Task<NeoWsModel> GetNeoWs(int id, IProgress<double> Progress = default, CancellationToken Cancel = default)
+        public async Task<NeoWsValue> GetNeoWs(int id, IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
-            return await _Client.GetFromJsonAsync<NeoWsModel>($"neo/rest/v1/neo/{id}?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa",
+            return await _Client.GetFromJsonAsync<NeoWsValue>($"neo/rest/v1/neo/{id}?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa",
                 Cancel).ConfigureAwait(false);
         }
-        public async Task<NeoWsModel> GetNeoWs(IProgress<double> Progress = default, CancellationToken Cancel = default)
+        public async Task<NeoWsValue> GetNeoWs(IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
-            return await _Client.GetFromJsonAsync<NeoWsModel>($"neo/rest/v1/neo/browse?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa",
+            return await _Client.GetFromJsonAsync<NeoWsValue>($"neo/rest/v1/neo/browse?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa",
                 Cancel).ConfigureAwait(false);
         }
         public async Task<MarsValue> GetMarsPhotos(int sol, IProgress<double> Progress = default, CancellationToken Cancel = default)
