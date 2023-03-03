@@ -51,6 +51,11 @@ namespace NASA_APIs.WPF.Infrastructure
             return await _Client.GetFromJsonAsync<NeoWsValue>($"neo/rest/v1/neo/browse?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa",
                 Cancel).ConfigureAwait(false);
         }
+        public async Task<NeoWsValue> GetNeoWsPage(int page, IProgress<double> Progress = default, CancellationToken Cancel = default)
+        {
+            return await _Client.GetFromJsonAsync<NeoWsValue>($"neo/rest/v1/neo/browse?page={page}&size=20&api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa",
+                Cancel).ConfigureAwait(false);
+        }
         public async Task<MarsValue> GetMarsPhotos(int sol, IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
             return await _Client.GetFromJsonAsync<MarsValue>($"mars-photos/api/v1/rovers/curiosity/photos?" +

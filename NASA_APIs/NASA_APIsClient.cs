@@ -50,6 +50,11 @@ namespace NASA_APIs
             return await _Client.GetFromJsonAsync<NeoWsModel>($"neo/rest/v1/neo/browse?api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa",
                 Cancel).ConfigureAwait(false);
         }
+        public async Task<NeoWsModel> GetNeoWsPage(int page, IProgress<double> Progress = default, CancellationToken Cancel = default)
+        {
+            return await _Client.GetFromJsonAsync<NeoWsModel>($"neo/rest/v1/neo/browse?page={page}&size=20&api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa",
+                Cancel).ConfigureAwait(false);
+        }
         public async Task<MarsRoversModel> GetMarsPhotos(int sol, IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
               return await _Client.GetFromJsonAsync<MarsRoversModel>($"mars-photos/api/v1/rovers/curiosity/photos?" +
