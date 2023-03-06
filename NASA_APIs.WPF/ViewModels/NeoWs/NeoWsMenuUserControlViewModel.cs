@@ -32,7 +32,7 @@ namespace NASA_APIs.WPF.ViewModels.NeoWs
             services.AddHttpClient<ClientRequests>(client => client.BaseAddress = new Uri(host.Configuration["NASA"]));
         }
 
-        public ObservableCollection<NASA_APIs.DAL.Entities.NearEarthObject> NeoWsValues { get; } = new();
+        public ObservableCollection<NearEarthObject> NeoWsValues { get; } = new();
 
 
         private LambdaCommand _AddDataSourceCommand;
@@ -41,7 +41,7 @@ namespace NASA_APIs.WPF.ViewModels.NeoWs
         private async void OnAddDataSourceCommandExecuted(object p)
         {
             NeoWsValues.Clear();
-            using var host = Hosting;
+            var host = Hosting;
             await host.StartAsync();
             var apod = Services.GetRequiredService<ClientRequests>();
             var pictures = await apod.GetNeoWs();

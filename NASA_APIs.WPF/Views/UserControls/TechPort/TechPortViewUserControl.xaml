@@ -19,5 +19,31 @@
                 Back To Main Menu
             </Button.ToolTip>
         </Button>
+        <ListBox Grid.Row="1" Background="Transparent" ItemsSource="{Binding TechPortValues}" 
+                 Foreground="AliceBlue" FontSize="18"
+                 SelectedItem="{Binding SelectedItem}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <DockPanel>
+                            <TextBlock Text="ProjectId: " TextWrapping="Wrap" 
+                                       Foreground="AliceBlue" Background="Transparent"/>
+                            <TextBlock Text="{Binding ProjectId}" TextWrapping="Wrap" 
+                                       Foreground="AliceBlue" Background="Transparent"/>
+
+                            <Polygon Fill="Gray" StrokeThickness="1" 
+                                 Stroke="Gray"
+                                     Points="0,0,0,15" Margin="5,5,5,5"/>
+
+                            <TextBlock Text="LastUpdated: " TextWrapping="Wrap" 
+                                       Foreground="AliceBlue" Background="Transparent"/>
+                            <TextBlock Text="{Binding LastUpdated}" TextWrapping="Wrap" 
+                                       Foreground="AliceBlue" Background="Transparent"/>
+
+                        </DockPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </UserControl>

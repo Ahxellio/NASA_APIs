@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Hosting;
 using NASA_APIs.DAL.Entities;
 using NASA_APIs.Interfaces.Base.Repositories;
-using NASA_APIs.Models;
 using NASA_APIs.WPF.Infrastructure;
 using NASA_APIs.WPF.Services;
 using NASA_APIs.WPF.Stores;

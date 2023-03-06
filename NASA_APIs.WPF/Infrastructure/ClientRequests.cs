@@ -1,5 +1,4 @@
 ﻿using NASA_APIs.DAL.Entities;
-using NASA_APIs.Models;
 using System;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -71,24 +70,27 @@ namespace NASA_APIs.WPF.Infrastructure
             return await _Client.GetFromJsonAsync<MarsValue>($"mars-photos/api/v1/rovers/curiosity/photos?" +
                 $"sol={sol}&page={page}&api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa", Cancel).ConfigureAwait(false);
         }
-        public async Task<TechTransferModel> GetTechTransfers(string soft, IProgress<double> Progress = default, CancellationToken Cancel = default)
+        public async Task<TechTransferValue> GetTechTransfers(string soft, IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
-            return await _Client.GetFromJsonAsync<TechTransferModel>($"techtransfer/patent/?{soft}" +
+            return await _Client.GetFromJsonAsync<TechTransferValue>($"techtransfer/patent/?{soft}" +
                 $"&api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa", Cancel).ConfigureAwait(false);
         }
-        public async Task<TechPortModel> GetTechPort(int id, IProgress<double> Progress = default, CancellationToken Cancel = default)
+        public async Task<TechPortValue> GetTechPort(int id, IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
-            return await _Client.GetFromJsonAsync<TechPortModel>($"techport/api/projects/{id}?" +
+            return await _Client.GetFromJsonAsync<TechPortValue>($"techport/api/projects/{id}?" +
                 $"api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa", Cancel).ConfigureAwait(false);
         }
-        public async Task<TechPortProjectsModel> GetTechPort(IProgress<double> Progress = default, CancellationToken Cancel = default)
+        public async Task<TechPortProjectsValue> GetTechPort(IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
-            return await _Client.GetFromJsonAsync<TechPortProjectsModel>($"techport/api/projects?" +
+            return await _Client.GetFromJsonAsync<TechPortProjectsValue>($"techport/api/projects?" +
                 $"api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa", Cancel).ConfigureAwait(false);
         }
-        public async Task<TechPortProjectsModel> GetTechPort(DateTime date, IProgress<double> Progress = default, CancellationToken Cancel = default)
+        public async Task<TechPortProjectsValue> GetTechPort(string date, IProgress<double> Progress = default, CancellationToken Cancel = default)
         {
-            return await _Client.GetFromJsonAsync<TechPortProjectsModel>($"techport/api/projects?updatedSince={date.Year}-{date.Month}-{date.Day}" +
+            var year = date.Split('.')[2];
+            var month = date.Split('.')[1];
+            var day = date.Split('.')[0];
+            return await _Client.GetFromJsonAsync<TechPortProjectsValue>($"techport/api/projects?updatedSince={year}-{month}-{day}" +
                 $"&api_key=Q7ybo1n8FBtVagagquxxfZMX74TMiQcOTtxqIzSa", Cancel).ConfigureAwait(false);
         }
 

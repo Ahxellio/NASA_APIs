@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NASA_APIs.DAL.Entities;
 using NASA_APIs.WPF.Infrastructure;
 using NASA_APIs.WPF.Services;
 using NASA_APIs.WPF.Stores;
@@ -73,7 +74,7 @@ namespace NASA_APIs.WPF.ViewModels.NeoWs
             }
         }
 
-        public ObservableCollection<NASA_APIs.DAL.Entities.NearEarthObject> NeoWsValues { get; } = new();
+        public ObservableCollection<NearEarthObject> NeoWsValues { get; } = new();
 
         private int _Page = 0;
         public int Page
@@ -88,8 +89,8 @@ namespace NASA_APIs.WPF.ViewModels.NeoWs
             get { return _Id; }
             set { Set(ref _Id, value); }
         }
-        private NASA_APIs.DAL.Entities.NearEarthObject _SelectedItem;
-        public NASA_APIs.DAL.Entities.NearEarthObject SelectedItem
+        private NearEarthObject _SelectedItem;
+        public NearEarthObject SelectedItem
         {
             get { return _SelectedItem; }
             set { Set(ref _SelectedItem, value);}

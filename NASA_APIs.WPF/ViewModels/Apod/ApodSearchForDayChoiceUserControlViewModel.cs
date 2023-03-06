@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Hosting;
 using NASA_APIs.DAL.Entities;
 using NASA_APIs.Interfaces.Base.Repositories;
-using NASA_APIs.Models;
 using NASA_APIs.WPF.Infrastructure;
 using NASA_APIs.WPF.Services;
 using NASA_APIs.WPF.Stores;
@@ -40,7 +39,7 @@ namespace NASA_APIs.WPF.ViewModels.Apod
         public ICommand AddDataSourceCommand => _AddDataSourceCommand ??= new(OnAddDataSourceCommandExecuted);
         private async void OnAddDataSourceCommandExecuted(object p)
         {
-            using var host = Hosting;
+            var host = Hosting;
             await host.StartAsync();
             var apod = Services.GetRequiredService<ClientRequests>();
             var pictures = await apod.GetAPOD(_Date);

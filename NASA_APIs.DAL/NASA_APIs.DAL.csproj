@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NASA_APIs.Interfaces.Base\NASA_APIs.Interfaces.Base.csproj" />
-    <ProjectReference Include="..\NASA_APIs\NASA_APIs.csproj" />
   </ItemGroup>
 
 </Project>

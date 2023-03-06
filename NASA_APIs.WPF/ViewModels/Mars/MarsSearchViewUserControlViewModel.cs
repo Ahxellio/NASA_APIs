@@ -16,13 +16,13 @@ namespace NASA_APIs.WPF.ViewModels.Mars
 {
     public class MarsSearchViewUserControlViewModel : BaseVM
     {
-        private DAL.Entities.Photo _Photo;
-        public DAL.Entities.Photo Photo
+        private Photo _Photo;
+        public Photo Photo
         {
             get { return _Photo; }
             set { Set(ref _Photo, value); }
         }
-        public ObservableCollection<DAL.Entities.Photo> PhotosValues { get; set; } = new();
+        public ObservableCollection<Photo> PhotosValues { get; set; } = new();
         private int _Sol;
         public int Sol
         {
