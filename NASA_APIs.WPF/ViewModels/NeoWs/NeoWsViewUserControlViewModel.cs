@@ -72,6 +72,7 @@ namespace NASA_APIs.WPF.ViewModels.NeoWs
             {
                 NeoWsValues.Add(picture);
             }
+            host.StopAsync();
         }
 
         public ObservableCollection<NearEarthObject> NeoWsValues { get; } = new();

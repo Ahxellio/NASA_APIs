@@ -12,6 +12,98 @@ namespace NASA_APIs.DAL.Entities
         [JsonPropertyName("project")]
         public Project Project { get; set; }
     }
+    public class Project
+    {
+        [JsonPropertyName("projectId")]
+        public int ProjectId { get; set; }
+
+        [JsonPropertyName("title")]
+        public string Title { get; set; }
+
+        [JsonPropertyName("primaryTaxonomyNodes")]
+        public List<PrimaryTaxonomyNode> PrimaryTaxonomyNodes { get; set; }
+
+        [JsonPropertyName("startTrl")]
+        public int StartTrl { get; set; }
+
+        [JsonPropertyName("currentTrl")]
+        public int CurrentTrl { get; set; }
+
+        [JsonPropertyName("endTrl")]
+        public int EndTrl { get; set; }
+
+        [JsonPropertyName("benefits")]
+        public string Benefits { get; set; }
+
+        [JsonPropertyName("description")]
+        public string Description { get; set; }
+
+        [JsonPropertyName("destinations")]
+        public List<Destination> Destinations { get; set; }
+
+        [JsonPropertyName("startYear")]
+        public int StartYear { get; set; }
+
+        [JsonPropertyName("startMonth")]
+        public int StartMonth { get; set; }
+
+        [JsonPropertyName("endYear")]
+        public int EndYear { get; set; }
+
+        [JsonPropertyName("endMonth")]
+        public int EndMonth { get; set; }
+
+        [JsonPropertyName("statusDescription")]
+        public string StatusDescription { get; set; }
+
+        [JsonPropertyName("principalInvestigators")]
+        public List<PrincipalInvestigator> PrincipalInvestigators { get; set; }
+
+        [JsonPropertyName("programDirectors")]
+        public List<ProgramDirector> ProgramDirectors { get; set; }
+
+        [JsonPropertyName("programExecutives")]
+        public List<ProgramExecutive> ProgramExecutives { get; set; }
+
+        [JsonPropertyName("programManagers")]
+        public List<ProgramManager> ProgramManagers { get; set; }
+
+        [JsonPropertyName("libraryItems")]
+        public List<LibraryItem> LibraryItems { get; set; }
+
+        [JsonPropertyName("transitions")]
+        public List<Transition> Transitions { get; set; }
+
+        [JsonPropertyName("primaryImage")]
+        public PrimaryImage PrimaryImage { get; set; }
+
+        [JsonPropertyName("responsibleMd")]
+        public ResponsibleMd ResponsibleMd { get; set; }
+
+        [JsonPropertyName("program")]
+        public Program Program { get; set; }
+
+        [JsonPropertyName("leadOrganization")]
+        public LeadOrganization LeadOrganization { get; set; }
+
+        [JsonPropertyName("supportingOrganizations")]
+        public List<SupportingOrganization> SupportingOrganizations { get; set; }
+
+        [JsonPropertyName("statesWithWork")]
+        public List<StatesWithWork> StatesWithWork { get; set; }
+
+        [JsonPropertyName("lastUpdated")]
+        public string LastUpdated { get; set; }
+
+        [JsonPropertyName("releaseStatusString")]
+        public string ReleaseStatusString { get; set; }
+
+        [JsonPropertyName("endDateString")]
+        public string EndDateString { get; set; }
+
+        [JsonPropertyName("startDateString")]
+        public string StartDateString { get; set; }
+    }
     public class CloseoutDocument
     {
         [JsonPropertyName("title")]
@@ -440,99 +532,6 @@ namespace NASA_APIs.DAL.Entities
 
         [JsonPropertyName("nacontact")]
         public bool Nacontact { get; set; }
-    }
-
-    public class Project
-    {
-        [JsonPropertyName("projectId")]
-        public int ProjectId { get; set; }
-
-        [JsonPropertyName("title")]
-        public string Title { get; set; }
-
-        [JsonPropertyName("primaryTaxonomyNodes")]
-        public List<PrimaryTaxonomyNode> PrimaryTaxonomyNodes { get; set; }
-
-        [JsonPropertyName("startTrl")]
-        public int StartTrl { get; set; }
-
-        [JsonPropertyName("currentTrl")]
-        public int CurrentTrl { get; set; }
-
-        [JsonPropertyName("endTrl")]
-        public int EndTrl { get; set; }
-
-        [JsonPropertyName("benefits")]
-        public string Benefits { get; set; }
-
-        [JsonPropertyName("description")]
-        public string Description { get; set; }
-
-        [JsonPropertyName("destinations")]
-        public List<Destination> Destinations { get; set; }
-
-        [JsonPropertyName("startYear")]
-        public int StartYear { get; set; }
-
-        [JsonPropertyName("startMonth")]
-        public int StartMonth { get; set; }
-
-        [JsonPropertyName("endYear")]
-        public int EndYear { get; set; }
-
-        [JsonPropertyName("endMonth")]
-        public int EndMonth { get; set; }
-
-        [JsonPropertyName("statusDescription")]
-        public string StatusDescription { get; set; }
-
-        [JsonPropertyName("principalInvestigators")]
-        public List<PrincipalInvestigator> PrincipalInvestigators { get; set; }
-
-        [JsonPropertyName("programDirectors")]
-        public List<ProgramDirector> ProgramDirectors { get; set; }
-
-        [JsonPropertyName("programExecutives")]
-        public List<ProgramExecutive> ProgramExecutives { get; set; }
-
-        [JsonPropertyName("programManagers")]
-        public List<ProgramManager> ProgramManagers { get; set; }
-
-        [JsonPropertyName("libraryItems")]
-        public List<LibraryItem> LibraryItems { get; set; }
-
-        [JsonPropertyName("transitions")]
-        public List<Transition> Transitions { get; set; }
-
-        [JsonPropertyName("primaryImage")]
-        public PrimaryImage PrimaryImage { get; set; }
-
-        [JsonPropertyName("responsibleMd")]
-        public ResponsibleMd ResponsibleMd { get; set; }
-
-        [JsonPropertyName("program")]
-        public Program Program { get; set; }
-
-        [JsonPropertyName("leadOrganization")]
-        public LeadOrganization LeadOrganization { get; set; }
-
-        [JsonPropertyName("supportingOrganizations")]
-        public List<SupportingOrganization> SupportingOrganizations { get; set; }
-
-        [JsonPropertyName("statesWithWork")]
-        public List<StatesWithWork> StatesWithWork { get; set; }
-
-        [JsonPropertyName("lastUpdated")]
-        public string LastUpdated { get; set; }
-
-        [JsonPropertyName("releaseStatusString")]
-        public string ReleaseStatusString { get; set; }
-
-        [JsonPropertyName("endDateString")]
-        public string EndDateString { get; set; }
-
-        [JsonPropertyName("startDateString")]
-        public string StartDateString { get; set; }
     }
 
     public class ResponsibleMd

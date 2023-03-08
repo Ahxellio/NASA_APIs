@@ -50,6 +50,7 @@ namespace NASA_APIs.WPF.ViewModels.Mars
             {
                 PhotosValues.Add(photo);
             }
+            host.StopAsync();
 
         }
         private int _Sol;

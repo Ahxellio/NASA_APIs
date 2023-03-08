@@ -31,7 +31,7 @@ namespace NASA_APIs.WPF.ViewModels.Mars
         {
             services.AddHttpClient<ClientRequests>(client => client.BaseAddress = new Uri(host.Configuration["NASA"]));
         }
-        public ObservableCollection<DAL.Entities.Photo> PhotosValues { get; set; } = new();
+        public ObservableCollection<Photo> PhotosValues { get; set; } = new();
 
 
         private LambdaCommand _AddDataSourceCommand;
@@ -44,11 +44,12 @@ namespace NASA_APIs.WPF.ViewModels.Mars
             await host.StartAsync();
             var apod = Services.GetRequiredService<ClientRequests>();
             MarsValue pictures = await apod.GetMarsPhotos(_Sol, _Camera);
-            List<DAL.Entities.Photo> rovers = pictures.Photos;
+            List<Photo> rovers = pictures.Photos;
             foreach(var photo in rovers)
             {
                 PhotosValues.Add(photo);
             }
+            host.StopAsync();
 
         }
         private int _Sol;

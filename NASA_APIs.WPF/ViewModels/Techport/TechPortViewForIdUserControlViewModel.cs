@@ -15,10 +15,16 @@ namespace NASA_APIs.WPF.ViewModels.Techport
 {
     public class TechPortViewForIdUserControlViewModel : BaseVM
     {
-        public ObservableCollection<TechPortValue> TechPortValues { get; } = new();
+        private Project _SelectedItem ;
+        public Project SelectedItem
+        {
+            get { return _SelectedItem; }
+            set { Set(ref _SelectedItem, value); }
+        }
+        public ObservableCollection<Project> TechPortValues { get; } = new();
         public ICommand NavigateMenuCommand { get; }
         public TechPortViewForIdUserControlViewModel(NavigationStore navigationStore, 
-            ObservableCollection<TechPortValue> techportValues)
+            ObservableCollection<Project> techportValues)
         {
             NavigateMenuCommand = new NavigateCommand<MenuViewModel>
                (new NavigationService<MenuViewModel>

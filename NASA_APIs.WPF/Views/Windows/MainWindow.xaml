@@ -20,7 +20,7 @@
         xmlns:vmneows="clr-namespace:NASA_APIs.WPF.ViewModels.NeoWs"
         mc:Ignorable="d"
         Title="MainWindow" 
-        Height="864" Width="1152">
+        Height="980" Width="1820" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.Resources>
             <DataTemplate DataType="{x:Type vmmars:MarsSearchForSolPageUserControlViewModel}">
@@ -73,6 +73,9 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type vmtechport:TechPortSearchByDateUserControlViewModel}">
                 <viewstechport:TechPortSearchByDateChoice/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmtechport:TechPortViewForIdUserControlViewModel}">
+                <viewstechport:TechPortViewForIdUserControl/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type vmtechport:TechPortViewUserControlViewModel}">
                 <viewstechport:TechPortViewUserControl/>

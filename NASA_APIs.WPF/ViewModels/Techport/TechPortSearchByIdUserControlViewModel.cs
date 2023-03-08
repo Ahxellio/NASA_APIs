@@ -33,7 +33,7 @@ namespace NASA_APIs.WPF.ViewModels.Techport
             new Uri(host.Configuration["NASA"]));
         }
 
-        public ObservableCollection<TechPortValue> TechPortValues { get; } = new();
+        public ObservableCollection<Project> TechPortValues { get; } = new();
 
 
         private LambdaCommand _AddDataSourceCommand;
@@ -46,7 +46,9 @@ namespace NASA_APIs.WPF.ViewModels.Techport
             await host.StartAsync();
             var apod = Services.GetRequiredService<ClientRequests>();
             var pictures = await apod.GetTechPort(_Id);
-            TechPortValues.Add(pictures);
+            var obj = pictures.Project;
+            TechPortValues.Add(obj);
+            
 
         }
         private int _Id;

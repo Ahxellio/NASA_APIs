@@ -12,12 +12,36 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Column="0" Grid.Row="0" Style="{StaticResource dashboardBtn}" VerticalAlignment="Center" HorizontalAlignment="Left"
+        <Button Grid.Row="0" Style="{StaticResource dashboardBtn}" VerticalAlignment="Center" HorizontalAlignment="Left"
                 Command="{Binding NavigateMenuCommand}">
             <fa:IconImage Icon="Backward" Style="{StaticResource btnIcon}"/>
             <Button.ToolTip>
                 Back To Main Menu
             </Button.ToolTip>
         </Button>
+        <StackPanel Grid.Row="1"  HorizontalAlignment="Center" Margin="10,10,10,10">
+            <ListBox ItemsSource="{Binding TechPortValues}" 
+                     SelectedItem="{Binding SelectedItem}" Style="{StaticResource listBoxStyle}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Title}" Style="{StaticResource textBlockStyle}"
+                                           HorizontalAlignment="Center" FontWeight="DemiBold"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <Label>
+                                    <TextBlock Text="{Binding Description}" Style="{StaticResource textBlockStyle}"/>
+
+                                </Label>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+        </StackPanel>
+        
     </Grid>
 </UserControl>

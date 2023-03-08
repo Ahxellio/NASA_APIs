@@ -34,13 +34,13 @@
                 Back To Main Menu
             </Button.ToolTip>
         </Button>
-        <ListBox Grid.Column="0" Grid.Row="1" Background="Transparent" Foreground="AliceBlue" 
+        <ListBox Grid.Column="0" Grid.Row="1" Style="{StaticResource listBoxStyle}"
                  ItemsSource="{Binding ApodValues}" SelectedItem="{Binding SelectedItem}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding Title}" TextWrapping="Wrap"/>
-                        <TextBlock Text="{Binding Date}" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding Title}" Style="{StaticResource textBlockStyle}"/>
+                        <TextBlock Text="{Binding Date}" Style="{StaticResource textBlockStyle}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -54,9 +54,9 @@
                 <Image Source="{Binding SelectedItem.ImageUrl}" Margin="20,20,20,20" MaxHeight="800"/>
             </StackPanel>
             <StackPanel Grid.Column="0" Grid.Row="1">
-                <TextBlock Text="{Binding SelectedItem.Title}" HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="AliceBlue" Background="Transparent"/>
-                <TextBlock Text="{Binding SelectedItem.Date}" HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="AliceBlue" Background="Transparent"/>
-                <TextBlock Text="{Binding SelectedItem.Text}" TextWrapping="Wrap" Foreground="AliceBlue" Background="Transparent"/>
+                <TextBlock Text="{Binding SelectedItem.Title}" HorizontalAlignment="Center" Style="{StaticResource textBlockStyle}"/>
+                <TextBlock Text="{Binding SelectedItem.Date}" HorizontalAlignment="Center" Style="{StaticResource textBlockStyle}"/>
+                <TextBlock Text="{Binding SelectedItem.Text}" Style="{StaticResource textBlockStyle}"/>
             </StackPanel>
            
         </Grid>

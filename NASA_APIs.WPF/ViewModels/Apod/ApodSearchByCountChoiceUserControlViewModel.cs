@@ -52,7 +52,7 @@ namespace NASA_APIs.WPF.ViewModels.Apod
             { 
                 ApodValues.Add(picture);
             }
-            
+
         }
         private int _Count;
         public int Count

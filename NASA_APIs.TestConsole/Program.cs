@@ -29,11 +29,11 @@ namespace NASA_APIs.TestConsole
             using var host = Hosting;
             await host.StartAsync();
             var apod = Services.GetRequiredService<NASA_APIsClient>();
-            var picture = await apod.GetTechPort();
+            var picture = await apod.GetTechPort(97124);
             Console.WriteLine("END!!!");
             Console.ReadLine();
             await host.StopAsync();
-            //54051288
+            //97124
         }
     }
 }
