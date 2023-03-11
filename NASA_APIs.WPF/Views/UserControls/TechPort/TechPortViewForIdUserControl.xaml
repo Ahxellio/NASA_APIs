@@ -20,28 +20,84 @@
             </Button.ToolTip>
         </Button>
         <StackPanel Grid.Row="1"  HorizontalAlignment="Center" Margin="10,10,10,10">
-            <ListBox ItemsSource="{Binding TechPortValues}" 
-                     SelectedItem="{Binding SelectedItem}" Style="{StaticResource listBoxStyle}">
-                <ListBox.ItemTemplate>
+            <ItemsControl ItemsSource="{Binding TechPortValues}"
+                     Style="{StaticResource itemsControlStyle}">
+                <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
                             <StackPanel>
                                 <TextBlock Text="{Binding Title}" Style="{StaticResource textBlockStyle}"
                                            HorizontalAlignment="Center" FontWeight="DemiBold"/>
+                                <TextBlock Text="{Binding Description}" Style="{StaticResource textBlockStyle}"/>
+                                <Polygon Fill="DarkGray" StrokeThickness="1" Stroke="DarkGray"
+                                     Points="0,0,2500,0" Margin="0,10,0,10"/>
+                                <DockPanel>
+                                    <TextBlock Text="Lead Organization: " FontWeight="SemiBold"
+                                               HorizontalAlignment="Left" Style="{StaticResource textBlockStyle}"/>
+                                    <TextBlock Text="{Binding LeadOrganization.OrganizationName}" 
+                                               HorizontalAlignment="Left" Style="{StaticResource textBlockStyle}"/>
+
+                                    <TextBlock Text="  City: " FontWeight="SemiBold"
+                                               HorizontalAlignment="Left" Style="{StaticResource textBlockStyle}"/>
+                                    <TextBlock Text="{Binding LeadOrganization.City}" 
+                                               HorizontalAlignment="Left" Style="{StaticResource textBlockStyle}"/>
+
+                                    <TextBlock Text="  Country: " FontWeight="SemiBold"
+                                               HorizontalAlignment="Left" Style="{StaticResource textBlockStyle}"/>
+                                    <TextBlock Text="{Binding LeadOrganization.Country.Name}" 
+                                               HorizontalAlignment="Left" Style="{StaticResource textBlockStyle}"/>
+
+                                    <TextBlock Text="  Status Description: " FontWeight="SemiBold"
+                                               HorizontalAlignment="Left" Style="{StaticResource textBlockStyle}"/>
+                                    <TextBlock Text="{Binding StatusDescription}" 
+                                               HorizontalAlignment="Left" Style="{StaticResource textBlockStyle}"/>
+
+                                    <TextBlock Text="  Start Date: " FontWeight="SemiBold"
+                                               HorizontalAlignment="Left" Style="{StaticResource textBlockStyle}"/>
+                                    <TextBlock Text="{Binding StartDateString}" 
+                                               HorizontalAlignment="Left" Style="{StaticResource textBlockStyle}"/>
+
+                                    <TextBlock Text="  End Date: " FontWeight="SemiBold"
+                                               HorizontalAlignment="Left" Style="{StaticResource textBlockStyle}"/>
+                                    <TextBlock Text="{Binding EndDateString}" 
+                                               HorizontalAlignment="Left" Style="{StaticResource textBlockStyle}"/>
+
+                                    <TextBlock Text="  Last Updated: " FontWeight="SemiBold"
+                                               HorizontalAlignment="Left" Style="{StaticResource textBlockStyle}"/>
+                                    <TextBlock Text="{Binding LastUpdated}" 
+                                               HorizontalAlignment="Left" Style="{StaticResource textBlockStyle}"/>
+                                    
+
+
+                                </DockPanel>
+                                <Polygon Fill="DarkGray" StrokeThickness="1" Stroke="DarkGray"
+                                     Points="0,0,2500,0" Margin="0,10,0,10"/>
                             </StackPanel>
                             <StackPanel>
-                                <Label>
-                                    <TextBlock Text="{Binding Description}" Style="{StaticResource textBlockStyle}"/>
-
-                                </Label>
+                                <DockPanel>
+                                    <TextBlock Text="Benefits: " FontWeight="SemiBold"
+                                               HorizontalAlignment="Left" Style="{StaticResource textBlockStyle}"/>
+                                    <TextBlock Text="{Binding Benefits}" 
+                                               HorizontalAlignment="Left" Style="{StaticResource textBlockStyle}"/>
+                                </DockPanel>
+                                <Polygon Fill="DarkGray" StrokeThickness="1" Stroke="DarkGray"
+                                     Points="0,0,2500,0" Margin="0,10,0,10"/>
+                            </StackPanel>
+                            
+                            <StackPanel>
+                                <DockPanel>
+                                    <TextBlock Text="Program Description: " FontWeight="SemiBold"
+                                               HorizontalAlignment="Left" Style="{StaticResource textBlockStyle}"/>
+                                    <TextBlock Text="{Binding Program.Description}" 
+                                               HorizontalAlignment="Left" Style="{StaticResource textBlockStyle}"/>
+                                </DockPanel>
                             </StackPanel>
 
                         </StackPanel>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-
+                </ItemsControl.ItemTemplate>
+                
+            </ItemsControl>
         </StackPanel>
-        
     </Grid>
 </UserControl>

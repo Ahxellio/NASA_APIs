@@ -19,9 +19,10 @@
                 Back To Main Menu
             </Button.ToolTip>
         </Button>
-        <ListBox Grid.Row="1" ItemsSource="{Binding TechPortValues}" 
+        <ListBox Grid.Row="1" ItemsSource="{Binding TechPortValues}"
                  FontSize="18" Style="{StaticResource listBoxStyle}"
-                 SelectedItem="{Binding SelectedItem}">
+                 SelectedItem="{Binding SelectedItem}" HorizontalAlignment="Center"
+                 ScrollViewer.VerticalScrollBarVisibility="Hidden">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -33,7 +34,7 @@
                                  Stroke="Gray"
                                      Points="0,0,0,15" Margin="5,5,5,5"/>
 
-                            <TextBlock Text="LastUpdated: " Style="{StaticResource textBlockStyle}"/>
+                            <TextBlock Text="LastUpdated: "  Style="{StaticResource textBlockStyle}"/>
                             <TextBlock Text="{Binding LastUpdated}" Style="{StaticResource textBlockStyle}"/>
 
                         </DockPanel>
